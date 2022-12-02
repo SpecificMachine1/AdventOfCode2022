@@ -1,6 +1,6 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; day-1.scm solutions for day one
-;; Copyright © 2022 Felix Thibault
+;; Copyright © 2022 Specific Machine
 (import (scheme base)
 	(scheme file)
 	(srfi 1)
