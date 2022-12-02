@@ -8,3 +8,5 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	//
 Solutions for 2022's Advent of Code contest:	README.md	/^# Solutions for 2022's Advent of Code contest:$/;"	c
+get-data	day/day-1.scm	/^(define (get-data port)$/;"	f
+most-calories	day/day-1.scm	/^(define (most-calories packs)$/;"	f
