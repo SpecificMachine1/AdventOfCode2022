@@ -1,0 +1,16 @@
+%%%% Starting test gauche-test
+Group begin: gauche-test
+Test begin:
+  test-name: "1.1-most-calories"
+Test end:
+  result-kind: pass
+  actual-value: 24000
+  expected-value: 24000
+Test begin:
+  test-name: "1.2-calories-of-top-three"
+Test end:
+  result-kind: pass
+  actual-value: (10000)
+  expected-value: #t
+Group end: gauche-test
+# of expected passes      2

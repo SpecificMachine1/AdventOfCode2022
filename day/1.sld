@@ -43,7 +43,7 @@
       (get-data (open-input-file "../data/day1-input.dat")))
     |#
 
-    ;; [List-of [List-of Numbers]] -> Number
+    ;; [List-of [List-of Numbers]] -> [List-of Number]
     (define (calories-of-top-three packs)
       (let lp1 ((packs packs) (first 0) (second 0) (third 0))
 	(if (null? packs)
