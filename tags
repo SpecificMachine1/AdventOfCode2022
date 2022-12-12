@@ -7,4 +7,28 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	0.0.0	//
+CHIBISHCEME	test/Makefile	/^CHIBISHCEME = chibi-scheme$/;"	m
+CHIBISHCEMEFLAGS	test/Makefile	/^CHIBISHCEMEFLAGS = -I $(top_srcdir)$/;"	m
+CYCC	test/Makefile	/^CYCC := cyclone$/;"	m
+GOSH	test/Makefile	/^GOSH = gosh$/;"	m
+GOSHFLAGS	test/Makefile	/^GOSHFLAGS = -I $(top_srcdir)$/;"	m
+GREEN	test/Makefile	/^GREEN := $(shell tput -Txterm setaf 2)$/;"	m
+HANDLE_RES	test/Makefile	/^HANDLE_RES := sed '\/ expected \/ s\/$$\/ $(GREEN)[PASS]$(RESET)\/'\\$/;"	m
+HANDLE_USRES	test/Makefile	/^HANDLE_USRES := sed '\/^ok\/ s\/.*\/$(GREEN)[PASS]&$(RESET)\/'\\$/;"	m
+ICYC	test/Makefile	/^ICYC := icyc$/;"	m
+ICYCFLAGS	test/Makefile	/^ICYCFLAGS := -I $(top_srcdir)$/;"	m
+LARCENY	test/Makefile	/^LARCENY = larceny$/;"	m
+LARCENYFLAGS	test/Makefile	/^LARCENYFLAGS = -r7 -I $(top_srcdir) <$/;"	m
+RED	test/Makefile	/^RED := $(shell tput -Txterm setaf 1)$/;"	m
+RESET	test/Makefile	/^RESET := $(shell tput sgr0)$/;"	m
+SHELL	test/Makefile	/^SHELL := bash$/;"	m
 Solutions for 2022's Advent of Code contest:	README.md	/^# Solutions for 2022's Advent of Code contest:$/;"	c
+UNSYNTAX	test/Makefile	/^UNSYNTAX = unsyntax-scheme$/;"	m
+UNSYNTAXFLAGS	test/Makefile	/^UNSYNTAXFLAGS = -I $(top_srcdir)$/;"	m
+VPATH	test/Makefile	/^VPATH := .:..$/;"	m
+data	test/Makefile	/^data := $(wildcard data\/*)$/;"	m
+days	test/Makefile	/^days := $(wildcard day\/*)$/;"	m
+gauche-aoc-test	test/Makefile	/^gauche-aoc-test: aoc-test.scm $(r7rs_deps)$/;"	t
+help	test/Makefile	/^help:  ## print this message$/;"	t
+r7rs_deps	test/Makefile	/^r7rs_deps := test-common.scm $(days) $(data)$/;"	m
+top_srcdir	test/Makefile	/^top_srcdir = $(abspath ..\/)$/;"	m

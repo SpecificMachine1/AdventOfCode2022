@@ -1,7 +1,7 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; aoc-test.scm  test AoC solutions against various implementations
 ;;               of Scheme
-;; Copyright © 2022 Felix Thibault
+;; Copyright © 2022 Specific Machine
 (import (scheme base)
 	(scheme file)
 	(day 1)
