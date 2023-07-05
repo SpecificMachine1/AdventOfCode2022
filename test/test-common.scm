@@ -22,4 +22,9 @@
 (let ((test-data "../data/day3-example1.dat"))
   (test-eq "3.1-first-priority-sum" 157 (filename->result-3.1 test-data))
   (test-eq "3.2-first-priority-sum" 70 (filename->result-3.2 test-data)))
+
+;; day 4 tests
+(let ((test-data "../data/day4-example1.dat"))
+  (test-eq "4.1-overlapping ranges" 2 (filename->result-4.1 test-data))
+  (test-eq "4.2-overlapping ranges" 4 (filename->result-4.2 test-data)))
 (test-end test-name)
