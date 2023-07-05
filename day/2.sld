@@ -51,9 +51,9 @@
 (define (score-games-2 games)
   (fold + 0 (map total-score games)))
 
-(score-games-2 (get-data-2 "../data/day2-example1.dat"))
+;;(score-games-2 (get-data-2 "../data/day2-example1.dat"))
 
-(score-games-2 (get-data-2 "../data/day2-input.dat"))
+;;(score-games-2 (get-data-2 "../data/day2-input.dat"))
 
 ;;Game Object <rock> | <paper> | <scissors>
 ;;            records used to represent game objects represented by
@@ -88,7 +88,7 @@
 (define-record-type <lose>
   (lose)
   lose?)
-d
+
 (define-record-type <draw>
   (draw)
   draw?)
@@ -136,8 +136,8 @@ d
 		      ((scissors? opponent) (paper))))
     ((draw? outcome) opponent)))
 
-(score-games-2.1 (get-data-2 "../data/day2-example1.dat"))
+;;(score-games-2.1 (get-data-2 "../data/day2-example1.dat"))
 
-(score-games-2.1 (get-data-2 "../data/day2-input.dat"))
+;;(score-games-2.1 (get-data-2 "../data/day2-input.dat"))
 
 ))

@@ -12,5 +12,29 @@ Test end:
   result-kind: pass
   actual-value: (10000)
   expected-value: #t
+Test begin:
+  test-name: "2.1-first-method-score"
+Test end:
+  result-kind: pass
+  actual-value: 15
+  expected-value: 15
+Test begin:
+  test-name: "2.2-second-method-score"
+Test end:
+  result-kind: pass
+  actual-value: 12
+  expected-value: 12
+Test begin:
+  test-name: "3.1-first-priority-sum"
+Test end:
+  result-kind: pass
+  actual-value: 157
+  expected-value: 157
+Test begin:
+  test-name: "3.2-first-priority-sum"
+Test end:
+  result-kind: pass
+  actual-value: 70
+  expected-value: 70
 Group end: gauche-test
-# of expected passes      2
+# of expected passes      6

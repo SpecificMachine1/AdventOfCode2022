@@ -4,7 +4,7 @@
 ;; Copyright © 2022 Specific Machine
 (import (scheme base)
 	(scheme file)
-	(day 1)
+	(day 1) (day 2) (day 3)
 	(srfi 64))
 (cond-expand
   (gauche (let ((test-name "gauche-test"))

@@ -47,7 +47,7 @@
               out
               (lp (read-line port) (cons (string->vector line) out)))))))
 
-    (get-data-3 "./data/day3-example1.dat")
+    ;;(get-data-3 "./data/day3-example1.dat")
 
     ;;comparator and hash table for working with characters
     (define char-comparator (make-comparator char? char=? char<? char-hash))
@@ -94,9 +94,9 @@
     (define (filename->result-3.1 filename)
       (fold + 0 (map overlap-priorities (map make-rucksack (get-data-3 filename)))))
     
-    (filename->result-3.1  "./data/day3-example1.dat")
+    ;;(filename->result-3.1  "./data/day3-example1.dat")
 
-    (filename->result-3.1  "./data/day3-input.dat")
+    ;;(filename->result-3.1  "./data/day3-input.dat")
 
     (define (filename->result-3.2 filename)
       (fold + 0 (map overlap-priorities-2 (group-in (map make-rucksack (get-data-3 filename)) 3))))
