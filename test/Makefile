@@ -46,5 +46,5 @@ help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
-	$(GOSH) $(GOSHFLAGS) $< |& $(HANDLE_RES)
+	$(GOSH) $(GOSHFLAGS) $< 2>&1 | $(HANDLE_RES)
 

@@ -27,4 +27,10 @@
 (let ((test-data "../data/day4-example1.dat"))
   (test-eq "4.1-overlapping ranges" 2 (filename->result-4.1 test-data))
   (test-eq "4.2-overlapping ranges" 4 (filename->result-4.2 test-data)))
+
+;;day 5 tests
+(let ((test-data (day5-get-data "../data/day5-example1.dat")))
+  (test-equal "5.1 mov one at a time" (list "[C]" "[M]" "[Z]") (day5-get-result (day5-run-job test-data)))
+  (test-equal "5.2 mov all at once" (list "[M]" "[C]" "[D]") (day5-get-result (day5-run-job-2 test-data))))
+
 (test-end test-name)
