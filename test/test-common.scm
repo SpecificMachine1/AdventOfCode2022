@@ -33,4 +33,16 @@
   (test-equal "5.1 mov one at a time" (list "[C]" "[M]" "[Z]") (day5-get-result (day5-run-job test-data)))
   (test-equal "5.2 mov all at once" (list "[M]" "[C]" "[D]") (day5-get-result (day5-run-job-2 test-data))))
 
+;;day 6 tests
+(let ((data-1 (day6-get-data "../data/day6-example1.dat"))
+     (data-2 (day6-get-data "../data/day6-example2.dat"))
+     (data-3 (day6-get-data "../data/day6-example3.dat"))
+     (data-4 (day6-get-data "../data/day6-example4.dat"))
+     (data-5 (day6-get-data "../data/day6-example5.dat")))
+    (test-assert "6.1 find packet start"
+                 (and (= (day6-ds-start data-1) 7)
+                      (= (day6-ds-start data-2) 5)
+                      (= (day6-ds-start data-3) 6)
+                      (= (day6-ds-start data-4) 10)
+                      (= (day6-ds-start data-5) 11))))
 (test-end test-name)
