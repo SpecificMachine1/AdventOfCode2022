@@ -9,6 +9,8 @@
 	  (srfi 115))
 
   (begin
+
+;;https://adventofcode.com/2022/day/1
     ;; Port -> List of List of Numbers
     (define (get-data port)
       (let lp ((line (read-line port)) (this '()) (all '()))

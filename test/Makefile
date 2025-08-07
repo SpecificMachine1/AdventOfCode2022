@@ -14,15 +14,12 @@ VPATH := .:..
 # interpreters and flags
 GOSH = gosh
 GOSHFLAGS = -I $(top_srcdir)
-LARCENY = larceny
-LARCENYFLAGS = -r7 -I $(top_srcdir) <
 CHIBISHCEME = chibi-scheme
 CHIBISHCEMEFLAGS = -I $(top_srcdir)
-UNSYNTAX = unsyntax-scheme
-UNSYNTAXFLAGS = -I $(top_srcdir)
-CYCC := cyclone
-ICYC := icyc
-ICYCFLAGS := -I $(top_srcdir)
+GUILE = guile
+GUILEFLAGS = -L $(top_srcdir) -X .sld
+gsi = gsi
+gsiflags = -:r7rs $(top_srcdir)
 
 # dependencies
 days := $(wildcard day/*)

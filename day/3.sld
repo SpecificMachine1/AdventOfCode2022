@@ -1,6 +1,7 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
-;; day-1.scm solutions for day one
+;; day/3.sld solutions for day three
 ;; Copyright © 2022 Specific Machine
+;; https://adventofcode.com/2022/day/3
 (define-library (day 3)
   (export get-data-3 Compart Rucksack char-comparator make-char-table
           item->priority make-rucksack overlap-priorities filename->result-3.1

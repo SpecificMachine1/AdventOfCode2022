@@ -11,6 +11,9 @@
           run-job-2)
 (begin
 #|
+
+https://adventofcode.com/2022/day/5
+
 Stacks are a group of stacks of crates refered to by numerical locations
   represented as a vector of lists of strings
 
@@ -45,11 +48,12 @@ crane-job
   (instructions cj-get-instructions)
   (stack-count cj-get-stack-count))
 
-;; get-data Filename -> Stacks 
+;; get-data Filename -> <crane-job> 
 (define (get-data filename)
   (call-with-input-file 
     filename 
     (lambda (port)
+        ;;port -> <crane-job>
         (define (process-lines port)
           (let ((index-line (regexp '(* (or numeric whitespace)))))
             (let lp ((line (read-line port))
@@ -67,10 +71,12 @@ crane-job
                 ((eqv? mode 'inst)
                  (lp (read-line port) stacklines (cons line instrlines) stack-count mode))
                 (else (lp (read-line port) (cons line stacklines) instrlines stack-count mode))))))
+        ;;<crane-job> -> <crane-job>
         (define (process-stacklines cj)
           (let* ((size (cj-get-stack-count cj))
                  (stacks (make-vector size '()))
                  (blank (regexp '(* whitespace))))
+            ;;string -> vectorIO
             (define (process-line line)
               (let lp ((left (string-append line " ")) (i 1))
                 (cond
@@ -84,7 +90,9 @@ crane-job
                               (lp rest (+ i 1)))))))))
             (for-each process-line (cj-get-stacks cj))
             (crane-job stacks (cj-get-instructions cj) size)))
+        ;;<crane-job> -> <crane-job>
         (define (process-instrlines cj)
+          ;;String -> <mov>
           (define (process-line line)
             (let* ((tokens (string-tokenize line))
                    (num-token? (lambda (token) (regexp-matches? (regexp '(+ num)) token)))
@@ -97,6 +105,7 @@ crane-job
             (cj-get-stack-count cj)))
       (process-instrlines (process-stacklines (process-lines port))))))
 
+;;<crane-job> -> Vector-of-Lists
 (define (run-job cj)
   (let ((stacks (vector-copy (cj-get-stacks cj))))
     (define (run-instruction instr)
@@ -112,9 +121,11 @@ crane-job
     (for-each run-instruction (cj-get-instructions cj))
     stacks))
 
+;;Vector-of-Lists -> List-of-Strings
 (define (get-result stacks)
   (map (lambda (i) (car (vector-ref stacks i))) (iota (- (vector-length stacks) 1) 1)))
 
+;;<crane-job> -> Vector-of-Lists
 (define (run-job-2 cj)
   (let ((stacks (vector-copy (cj-get-stacks cj))))
     (define (run-instruction instr)

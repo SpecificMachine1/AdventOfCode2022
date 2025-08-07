@@ -1,6 +1,7 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;;
 ;; Copyright © 2022 Specific Machine
+;; problem: https://adventofcode.com/2022/day/2
 (define-library (day 2)
 		(export get-data-2 score-games-2 score-games-2.1)
 		(import (scheme base)
