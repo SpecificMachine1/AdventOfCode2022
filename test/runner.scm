@@ -1,20 +1,29 @@
-(define (my-simple-runner filename)
+(define (send-text . a)
+  (display (apply string-append a))
+  (newline))
+(define (my-simple-runner)
   (let ((runner (test-runner-null))
-	(port (open-output-file filename))
         (num-passed 0)
         (num-failed 0))
+    (test-runner-on-test-begin! runner
+      (lambda (runner)
+        (display (test-runner-test-name runner))))
     (test-runner-on-test-end! runner
       (lambda (runner)
         (case (test-result-kind runner)
-          ((pass xpass) (set! num-passed (+ num-passed 1)))
-          ((fail xfail) (set! num-failed (+ num-failed 1)))
+          ((pass xpass) (set! num-passed (+ num-passed 1))
+                        (send-text " pass " ))
+          ((fail xfail) (set! num-failed (+ num-failed 1))
+                        (send-text " fail "))
           (else #t))))
     (test-runner-on-final! runner
        (lambda (runner)
-          (format port "Passing tests: ~d.~%Failing tests: ~d.~%"
-                  num-passed num-failed)
-	  (close-output-port port)))
+          (send-text "Passing tests: " 
+                      (number->string num-passed)
+                      "\t"
+                      " Failing tests: "
+                      (number->string num-failed))))
     runner))
 
 (test-runner-factory
- (lambda () (my-simple-runner (string-append "./" test-name "-test.log"))))
+ (lambda () (my-simple-runner)))

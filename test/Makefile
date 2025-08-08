@@ -8,7 +8,6 @@
 
 # environment
 top_srcdir = $(abspath ../)
-akku = $$HOME/.akku/lib
 SHELL := bash
 VPATH := .:..
 
@@ -16,7 +15,7 @@ VPATH := .:..
 GOSH = gosh
 GOSHFLAGS = -I $(top_srcdir)
 CHIBISHCEME = chibi-scheme
-CHIBISHCEMEFLAGS = -I $(top_srcdir) -I $(akku)
+CHIBISHCEMEFLAGS = -I $(top_srcdir) 
 GUILE = guile
 GUILEFLAGS = -L $(top_srcdir) -X .sld
 gsi = gsi
@@ -32,11 +31,9 @@ r7rs_deps := test-common.scm $(days) $(data)
 RED := $(shell tput -Txterm setaf 1)
 GREEN := $(shell tput -Txterm setaf 2)
 RESET := $(shell tput sgr0)
-HANDLE_RES := sed '/ expected / s/$$/ $(GREEN)[PASS]$(RESET)/'\
-	    | sed '/unexpected/ s/$$/ $(RED)[FAIL]$(RESET)/'\
-	    | sed '/^ERROR:/ s/$$/ $(RED)[FAIL]$(RESET)/'
-HANDLE_USRES := sed '/^ok/ s/.*/$(GREEN)[PASS]&$(RESET)/'\
-	      | sed '/^not ok/ s/.*/$(RED)[FAIL]&$(RESET)/'\
+HANDLE_RES := sed '/ pass / s/$$/ $(GREEN)pass$(RESET)/'\
+	    | sed '/ fail / s/$$/ $(RED)fail$(RESET)/'\
+	    | sed '/^ERROR:/ s/$$/ $(RED)fail$(RESET)/'
 
 ############################################################
 #			   Rules			   #
@@ -47,7 +44,7 @@ help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
-	$(GOSH) $(GOSHFLAGS) $< 2>&1 | $(HANDLE_RES)
+	$(GOSH) $(GOSHFLAGS) $< 2>&1 | tee test-logs/gauche.log | $(HANDLE_RES)
 
 chibi-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Chibi
 	$(CHIBISHCEME) $(CHIBISHCEMEFLAGS) $< 2>&1 | $(HANDLE_RES)
