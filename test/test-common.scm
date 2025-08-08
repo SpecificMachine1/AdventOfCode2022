@@ -1,6 +1,7 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; test-common.scm srfi-64 tests for each day
 ;; Copyright © 2022 Specific Machine
+(include "./runner.scm")
 (test-begin test-name)
 
 ;;day 1 tests

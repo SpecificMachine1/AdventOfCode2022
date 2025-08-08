@@ -8,5 +8,7 @@
 	(srfi 64))
 (cond-expand
   (gauche (let ((test-name "gauche-test"))
-	      (include "test/test-common.scm"))))
+	      (include "test/test-common.scm")))
+  (chibi (let ((test-name "chibi-test"))
+           (include "test/test-common.scm"))))
 

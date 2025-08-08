@@ -8,6 +8,7 @@
 
 # environment
 top_srcdir = $(abspath ../)
+akku = $$HOME/.akku/lib
 SHELL := bash
 VPATH := .:..
 
@@ -15,7 +16,7 @@ VPATH := .:..
 GOSH = gosh
 GOSHFLAGS = -I $(top_srcdir)
 CHIBISHCEME = chibi-scheme
-CHIBISHCEMEFLAGS = -I $(top_srcdir)
+CHIBISHCEMEFLAGS = -I $(top_srcdir) -I $(akku)
 GUILE = guile
 GUILEFLAGS = -L $(top_srcdir) -X .sld
 gsi = gsi
@@ -48,3 +49,5 @@ help:  ## print this message
 gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
 	$(GOSH) $(GOSHFLAGS) $< 2>&1 | $(HANDLE_RES)
 
+chibi-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Chibi
+	$(CHIBISHCEME) $(CHIBISHCEMEFLAGS) $< 2>&1 | $(HANDLE_RES)
