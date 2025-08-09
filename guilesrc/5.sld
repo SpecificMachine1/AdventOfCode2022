@@ -1,9 +1,10 @@
+;;
 (define-library (guilesrc 5)
   (import (scheme base)
           (scheme char)
-          (srfi 1)
+          (only (srfi 1) fold every filter first second third iota)
           (scheme file)
-          (srfi 13)
+          (only (srfi 13) string-contains string-tokenize string-take string-drop)
           (scheme write))
   (export get-data cj-get-stacks cj-get-instructions cj-get-stack-count run-job get-result
           run-job-2)
