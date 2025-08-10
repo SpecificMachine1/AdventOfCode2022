@@ -33,6 +33,8 @@ gambitdays := guilesrc/1.sld guilesrc/2.sld guilesrc/3.sld guilesrc/4.sld guiles
               guilesrc/6.sld
 gambit_deps := test-common.scm $(gambitdays) $(data)
 
+####################################### post-processing ###############################
+
 # add red/green [FAIL]/[PASS] to output based on the words
 # unexpected|ERROR/expected
 RED := $(shell tput -Txterm setaf 1)
@@ -41,6 +43,9 @@ RESET := $(shell tput sgr0)
 HANDLE_RES := sed '/ pass / s/$$/ $(GREEN)pass$(RESET)/'\
 	    | sed '/ fail / s/$$/ $(RED)fail$(RESET)/'\
 	    | sed '/^ERROR:/ s/$$/ $(RED)fail$(RESET)/'
+
+#remove warnings after results
+clean-after := sed '1,/^Passing tests:/!d'
 
 ############################################################
 #			   Rules			   #
@@ -56,7 +61,7 @@ gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
 	$(GOSH) $(GOSHFLAGS) $< 2>&1 | tee test-logs/gauche.csv | $(HANDLE_RES)
 
 guile-aoc-test: aoc-test.guile.scm $(guile_deps) ## test against Guile
-	$(GUILE) $(GUILEFLAGS) $< 2>&1 | tee test-logs/guile.csv | $(HANDLE_RES)
+	$(GUILE) $(GUILEFLAGS) $< 2>&1 | $(clean-after) | tee test-logs/guile.csv | $(HANDLE_RES)
 
 gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
 	$(gsi) $(gsiflags) $< 2>&1 | tee test-logs/gambit.log | $(HANDLE_RES)

@@ -1,3 +1,5 @@
+WARNING: (guile-user): imported module (scheme base) overrides core binding `include'
+WARNING: (guile-user): imported module (scheme base) overrides core binding `member'
 test, 	 status 
 1.1-most-calories , 	 pass 
 1.2-calories-of-top-three , 	 pass 
@@ -11,5 +13,3 @@ test, 	 status
 5.2 mov all at once , 	 pass 
 6.1 find packet start , 	 pass 
 Passing tests: 11 , 	 Failing tests: 0
-WARNING: (guile-user): imported module (scheme base) overrides core binding `include'
-WARNING: (guile-user): imported module (scheme base) overrides core binding `member'
