@@ -45,5 +45,11 @@
                       (= (day6-ds-start data-2) 5)
                       (= (day6-ds-start data-3) 6)
                       (= (day6-ds-start data-4) 10)
-                      (= (day6-ds-start data-5) 11))))
+                      (= (day6-ds-start data-5) 11)))
+    (test-assert "6.2 find message start"
+                 (and (= (day6-get-start-of-message data-1) 19)
+                      (= (day6-get-start-of-message data-2) 23)
+                      (= (day6-get-start-of-message data-3) 23)
+                      (= (day6-get-start-of-message data-4) 29)
+                      (= (day6-get-start-of-message data-5) 26))))
 (test-end test-name)

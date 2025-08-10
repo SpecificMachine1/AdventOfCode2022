@@ -17,7 +17,7 @@ GOSHFLAGS = -I $(top_srcdir)
 CHIBISHCEME = chibi-scheme
 CHIBISHCEMEFLAGS = -I $(top_srcdir) 
 GUILE = guile
-GUILEFLAGS = -L . -L .. -x .sld --no-auto-compile
+GUILEFLAGS = -L . -L .. -x .sld --no-auto-compile --no-debug
 gsi = gsi
 gsiflags = -:r7rs,debug=- . ..
 
@@ -44,8 +44,9 @@ HANDLE_RES := sed '/ pass / s/$$/ $(GREEN)pass$(RESET)/'\
 	    | sed '/ fail / s/$$/ $(RED)fail$(RESET)/'\
 	    | sed '/^ERROR:/ s/$$/ $(RED)fail$(RESET)/'
 
-#remove warnings after results
-clean-after := sed '1,/^Passing tests:/!d'
+# handle guile debug messages
+clean-guile := sed '1,/^Passing tests:/!d'
+
 
 ############################################################
 #			   Rules			   #
@@ -58,10 +59,10 @@ help:  ## print this message
 all: gauche-aoc-test guile-aoc-test gambit-aoc-test
 
 gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
-	$(GOSH) $(GOSHFLAGS) $< 2>&1 | tee test-logs/gauche.csv | $(HANDLE_RES)
+	$(GOSH) $(GOSHFLAGS) $< | tee test-logs/gauche.csv | $(HANDLE_RES)
 
 guile-aoc-test: aoc-test.guile.scm $(guile_deps) ## test against Guile
-	$(GUILE) $(GUILEFLAGS) $< 2>&1 | $(clean-after) | tee test-logs/guile.csv | $(HANDLE_RES)
+	$(GUILE) $(GUILEFLAGS) $< | tee test-logs/guile.csv | $(HANDLE_RES)
 
 gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
-	$(gsi) $(gsiflags) $< 2>&1 | tee test-logs/gambit.log | $(HANDLE_RES)
+	$(gsi) $(gsiflags) $< | tee test-logs/gambit.log | $(HANDLE_RES)
