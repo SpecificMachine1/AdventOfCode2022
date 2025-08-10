@@ -1,0 +1,8 @@
+(import (scheme base)
+        (scheme file)
+        (scheme write)
+        (guilesrc day1) (guilesrc day2) (guilesrc day3) (guilesrc day4)
+        (prefix (guilesrc day5) day5-) (prefix (guilesrc day6) day6-)
+        (srfi srfi-64))
+(let ((test-name "guile-test"))
+           (include "test-common.scm"))

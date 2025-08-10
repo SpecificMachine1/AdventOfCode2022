@@ -1,3 +1,6 @@
+(import (scheme base)
+        (scheme write)
+        (srfi 64))
 (define (send-text . a)
   (display (apply string-append a))
   (newline))
