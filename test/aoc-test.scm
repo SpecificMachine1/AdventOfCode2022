@@ -9,6 +9,7 @@
                   (day 1) (day 2) (day 3) (day 4) (prefix (day 5) day5-) (prefix (day 6) day6-)
                   (srfi 64))
           (let ((test-name "gauche-test"))
+            (include "test/runner.scm")
             (include "test/test-common.scm")))
   (guile (import (scheme base)
                  (scheme file)

@@ -2,7 +2,7 @@
 (define-library (guilesrc 5)
   (import (scheme base)
           (scheme char)
-          (only (srfi 1) fold every filter first second third iota)
+          (only (srfi 1) fold every filter first second third iota split-at)
           (scheme file)
           (only (srfi 13) string-contains string-tokenize string-take string-drop)
           (scheme write))

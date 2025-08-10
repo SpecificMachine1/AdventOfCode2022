@@ -17,9 +17,9 @@ GOSHFLAGS = -I $(top_srcdir)
 CHIBISHCEME = chibi-scheme
 CHIBISHCEMEFLAGS = -I $(top_srcdir) 
 GUILE = guile
-GUILEFLAGS = -L . -L .. -x .sld
+GUILEFLAGS = -L . -L .. -x .sld --no-auto-compile
 gsi = gsi
-gsiflags = -:r7rs . ..
+gsiflags = -:r7rs,debug=- . ..
 
 # dependencies
 days := $(wildcard day/*)
@@ -50,6 +50,8 @@ HANDLE_RES := sed '/ pass / s/$$/ $(GREEN)pass$(RESET)/'\
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+all: gauche-aoc-test guile-aoc-test gambit-aoc-test
+
 gauche-aoc-test: aoc-test.scm $(r7rs_deps) ## test against Gauche
 	$(GOSH) $(GOSHFLAGS) $< 2>&1 | tee test-logs/gauche.csv | $(HANDLE_RES)
 
@@ -57,4 +59,4 @@ guile-aoc-test: aoc-test.guile.scm $(guile_deps) ## test against Guile
 	$(GUILE) $(GUILEFLAGS) $< 2>&1 | tee test-logs/guile.csv | $(HANDLE_RES)
 
 gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
-	$(GAMBIT) $(GAMBITFLAGS) $< 2>&1 | tee test-logs/gambit.csv | $(HANDLE_RES)
+	$(gsi) $(gsiflags) $< 2>&1 | tee test-logs/gambit.log | $(HANDLE_RES)

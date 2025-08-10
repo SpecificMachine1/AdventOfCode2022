@@ -11,7 +11,7 @@
     (test-runner-on-test-begin! runner
       (lambda (runner)
         (display (test-runner-test-name runner))
-        (display ",\t")))
+        (display " ,\t")))
     (test-runner-on-test-end! runner
       (lambda (runner)
         (case (test-result-kind runner)
@@ -24,8 +24,8 @@
        (lambda (runner)
           (send-text "Passing tests: " 
                       (number->string num-passed)
-                      ",:"
-                      "\t"
+                      " , "
+                      " \t "
                       " Failing tests: "
                       (number->string num-failed))))
     runner))

@@ -1,13 +1,15 @@
-1.1-most-calories pass 
-1.2-calories-of-top-three pass 
-2.1-first-method-score pass 
-2.2-second-method-score pass 
-3.1-first-priority-sum pass 
-3.2-first-priority-sum pass 
-4.1-overlapping ranges pass 
-4.2-overlapping ranges pass 
-5.1 mov one at a time pass 
-5.2 mov all at once pass 
-6.1 find packet start pass 
-Passing tests: 11	 Failing tests: 0
+test, 	 status 
+1.1-most-calories , 	 pass 
+1.2-calories-of-top-three , 	 pass 
+2.1-first-method-score , 	 pass 
+2.2-second-method-score , 	 pass 
+3.1-first-priority-sum , 	 pass 
+3.2-first-priority-sum , 	 pass 
+4.1-overlapping ranges , 	 pass 
+4.2-overlapping ranges , 	 pass 
+5.1 mov one at a time , 	 pass 
+5.2 mov all at once , 	 pass 
+6.1 find packet start , 	 pass 
+Passing tests: 11 , 	 Failing tests: 0
+WARNING: (guile-user): imported module (scheme base) overrides core binding `include'
 WARNING: (guile-user): imported module (scheme base) overrides core binding `member'

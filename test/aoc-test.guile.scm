@@ -5,4 +5,5 @@
         (prefix (guilesrc day5) day5-) (prefix (guilesrc day6) day6-)
         (srfi srfi-64))
 (let ((test-name "guile-test"))
+           (include "runner.scm")
            (include "test-common.scm"))
