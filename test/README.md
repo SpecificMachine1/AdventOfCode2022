@@ -12,3 +12,7 @@ To add new tests:
 1. Make sure the library is imported in aoc-test.scm
 2. Write the tests in srfi-64 form in test-common.scm
 3. Run the tests by making the target(s) of interest, results may automatically stored as logfiles or you may have to do that through the Makefile
+
+
+Notes: 
+- Added a runner to get uniform output in csv format for tests. This doesn't work for Gambit since it's SRFI-64 is just an alias for a much simpler system that doesn't support custom runners. Also took stderr off pipeline to clean up csv.
