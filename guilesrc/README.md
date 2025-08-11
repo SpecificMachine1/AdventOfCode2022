@@ -1,4 +1,4 @@
-#Ported files for Guile (dayx.sld) and Gambit (X.sld)[these also work with Gauche]
+# Ported files for Guile (dayX.sld) and Gambit (X.sld)[these also work with Gauche]
 
 - learned sticking to only most common srfi's is best way to be portable, and that there just because a srfi is widely used and an implementation is popular, doesn't mean that implementation will have that srfi
 
