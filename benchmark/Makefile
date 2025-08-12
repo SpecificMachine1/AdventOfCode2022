@@ -37,13 +37,21 @@ gambit_deps := $(gambitdays) $(data)
 #			   Rules			   #
 ############################################################
 
-.PHONY: test clean-guile-cache
+.PHONY: test clean-guile-cache clean all
 
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv
+
 gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler)
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
+
+gauche-guilesrc-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler)
+	$(GOSH) $(GOSHFLAGS) $< | tee gauche-guilesrc-bench.csv
+
+guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler)
+	$(GUILE) $(FASTGUILEFLAGS) $< | tee guile-bench.csv
 
 guile-bytecode: load-to-compile.scm $(guile_deps) ## bytecode compile guile files
 	$(GUILE) $(FASTGUILEFLAGS) $<
@@ -55,3 +63,6 @@ clean-guile-cache: ## remove guile
 
 test:
 	echo $(go-files)
+
+clean:
+	$(RM) *.csv
