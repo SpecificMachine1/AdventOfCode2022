@@ -1,0 +1,5 @@
+(import (scheme base)
+        (guilesrc day1) (guilesrc day2) (guilesrc day3) (guilesrc day4)
+        (guilesrc day5) (guilesrc day6)
+        )
+(define x 1)
