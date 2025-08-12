@@ -21,3 +21,9 @@ then I think that might have started around puzzle seven, so who knows.
 - I am going to try to use some of the features I am less familiar with in the core language
 this year (2025 :joy:) like continuations, macros, parameters, force & promise, environments,
 etc. So far I've used call/cc to pass an escape t a search function that was in a fold
+
+- Helpful links:
+  - [r7rs small](https://standards.scheme.org/unofficial/errata-corrected-r7rs.pdf)
+  - [r7rs large red](https://codeberg.org/scheme/r7rs/src/branch/main/ballot-results/jcowan/edition/2016-07-red-edition-report.md)
+  - [Gauche Manual](https://practical-scheme.net/gauche/man/gauche-refe/index.html)
+  - [Advent of Code 2022](https://adventofcode.com/2022)

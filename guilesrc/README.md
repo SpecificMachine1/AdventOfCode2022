@@ -4,5 +4,5 @@
 
 - Did see a speed up in Gauche when I moved away from simple regexes to just string & char methods
 
-- Guile requires (srfi srfi-x) import format
-- Gambit requires (only ...) (prefix ...) etc for name clashes
+- [Guile](https://www.gnu.org/software/guile/manual/html_node/index.html) requires (srfi srfi-x) import format, compiles to bytecode
+- [Gambit](https://web.archive.org/web/20250709114707/https://gambitscheme.org/latest/manual/) requires (only ...) (prefix ...) etc for name clashes, libraries in (scheme red) are under there srfi names [eg (srfi 1) instead of (scheme list)], compiles to C
