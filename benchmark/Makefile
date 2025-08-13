@@ -19,12 +19,16 @@ SLOWGUILEFLAGS = -L . -L .. --no-auto-compile -x .sld
 FASTGUILEFLAGS = -L . -L .. -x .sld 
 FASTESTGUILEFLAGS = -L . -L .. -O9 -x .sld # according to the manual this works, so far, it hasn't
 gsi = gsi
-gsiflags = -:r7rs,debug=- . ..
+gsiflags = -:r7rs . ..
+gsc = gsc
+gscexeflags = -cc clang -cc-options "O0" -exe -nopreload 
+gscmodflags = -cc clang -cc-options "O0" -module-ref
 
 # dependencies
 days := $(wildcard day/*)
 data := $(wildcard data/*)
 r7rs_deps := $(days) $(data)
+profiler := profiler.sld
 
 guiledays := $(wildcard guilesrc/day*)
 guile_deps := $(guiledays) $(data)
@@ -32,6 +36,11 @@ guile_deps := $(guiledays) $(data)
 gambitdays := guilesrc/1.sld guilesrc/2.sld guilesrc/3.sld guilesrc/4.sld guilesrc/5.sld \
               guilesrc/6.sld
 gambit_deps := $(gambitdays) $(data)
+
+gscdays_c := $(gambitdays:.sld=.c)
+profiler_c := $(profiler:.sld=.c)
+gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-guilesrc.c
+
 
 ############################################################
 #			   Rules			   #
@@ -42,7 +51,7 @@ gambit_deps := $(gambitdays) $(data)
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv
+all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv gsi-bench.csv
 
 gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler)
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
@@ -55,6 +64,18 @@ guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler)
 
 guile-bytecode: load-to-compile.scm $(guile_deps) ## bytecode compile guile files
 	$(GUILE) $(FASTGUILEFLAGS) $<
+
+gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler)
+	$(gsi) $(gsiflags) $< | tee guile-bench.csv
+
+gsc-bench: $(gsc_deps)
+	$(gsc) $(gscexeflags) . .. $(gsc_deps)
+
+profile-solutions-guilesrc.c: profile-solutions-guilesrc.scm $(profiler_c) $(gscdays_c)
+	$(gsc) -cc clang -cc-options "-O0" -c . .. $<
+
+%.c: %.sld
+	$(gsc) $(gscmodflags) $* -c . .. $^
 
 .ONESHELL:
 clean-guile-cache: ## remove guile

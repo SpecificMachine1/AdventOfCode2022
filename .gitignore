@@ -3,3 +3,4 @@
 !/.gitignore
 files.*
 data/*input.dat
+*.c

@@ -19,11 +19,11 @@
              body ...
              (lp (- i 1)))))))))
 (define (start-run)
-  (display "name, millisec to run once, average millisec for 50 runs\n"))
+  (display "name, millisec to run once, average millisec for 100 runs\n"))
 (define-syntax run
   (syntax-rules ()
     ((run name body ...)
      (let ((once (time-it 1 body ...))
-           (fifty-times (time-it 50 body ...)))
+           (fifty-times (time-it 100 body ...)))
        (display (string-append name "," (number->string once) "," (number->string fifty-times) "\n"))))))
 ))
