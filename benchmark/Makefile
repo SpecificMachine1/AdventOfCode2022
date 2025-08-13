@@ -63,9 +63,6 @@ gauche-guilesrc-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profil
 guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler) ## run ported benchmarks with Guile
 	$(GUILE) $(FASTGUILEFLAGS) $< | tee guile-bench.csv
 
-guile-bytecode: load-to-compile.scm $(guile_deps) ## bytecode compile guile files
-	$(GUILE) $(FASTGUILEFLAGS) $<
-
 gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
 	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
