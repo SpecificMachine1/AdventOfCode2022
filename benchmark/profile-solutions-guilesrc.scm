@@ -10,7 +10,7 @@
             (guilesrc 1) (guilesrc 2) (guilesrc 3) (guilesrc 4) (prefix  (guilesrc 5) day5-) (prefix (guilesrc 6) day6-)
             (benchmark profiler))))
 (start-run)
-(run "\"solution for 1.1 most calories\"" (most-calories (get-data (open-input-file "../data/day1-input.dat"))))
+(run "1.1 most calories" (most-calories (get-data (open-input-file "../data/day1-input.dat"))))
 (run "1.2 calories of top three" (calories-of-top-three (get-data (open-input-file "../data/day1-input.dat"))))
 (run "2.1 first method score" (score-games-2 (get-data-2 "../data/day2-input.dat")))
 (run "2.2 second method score" (score-games-2.1 (get-data-2 "../data/day2-input.dat")))
