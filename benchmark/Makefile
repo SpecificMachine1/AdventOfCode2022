@@ -29,7 +29,7 @@ days := $(wildcard day/*)
 data := $(wildcard data/*)
 r7rs_deps := $(days) $(data)
 profiler := profiler.sld
-gscprfiler := benchmark/profiler.sld
+gscprofiler := benchmark/profiler.sld
 
 guiledays := $(wildcard guilesrc/day*)
 guile_deps := $(guiledays) $(data)
@@ -67,10 +67,10 @@ gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler) ## run 
 	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
 gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
-	$(gsc) $(gscexeflags) .  ..$(gsc_deps)
+	$(gsc) $(gscexeflags) .  $(gsc_deps)
 
 profile-solutions-guilesrc.c: profile-solutions-guilesrc.scm $(profiler_c) $(gscdays_c)
-	$(gsc) -cc clang  -c . .. $<
+	$(gsc) -cc clang  -c .  $<
 
 %.c: %.sld
 	$(gsc) $(gscmodflags) $* -c .  $^
