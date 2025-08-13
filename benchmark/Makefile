@@ -52,24 +52,24 @@ gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-guilesrc.c
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv gsi-bench.csv
+all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv gsi-bench.csv ## run all benchmarks
 
-gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler)
+gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler) ## run benchmarks for original solutions in Gauche
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
 
-gauche-guilesrc-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler)
+gauche-guilesrc-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler) ## run benchmarks for ported solutions in Gauche
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-guilesrc-bench.csv
 
-guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler)
+guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler) ## run ported benchmarks with Guile
 	$(GUILE) $(FASTGUILEFLAGS) $< | tee guile-bench.csv
 
 guile-bytecode: load-to-compile.scm $(guile_deps) ## bytecode compile guile files
 	$(GUILE) $(FASTGUILEFLAGS) $<
 
-gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler)
+gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
 	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
-gsc-bench: $(gsc_deps)
+gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
 	$(gsc) $(gscexeflags) .  ..$(gsc_deps)
 
 profile-solutions-guilesrc.c: profile-solutions-guilesrc.scm $(profiler_c) $(gscdays_c)
