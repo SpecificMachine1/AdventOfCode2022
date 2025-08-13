@@ -21,14 +21,15 @@ FASTESTGUILEFLAGS = -L . -L .. -O9 -x .sld # according to the manual this works,
 gsi = gsi
 gsiflags = -:r7rs . ..
 gsc = gsc
-gscexeflags = -cc clang -cc-options "O0" -exe -nopreload 
-gscmodflags = -cc clang -cc-options "O0" -module-ref
+gscexeflags = -cc clang -exe -nopreload 
+gscmodflags = -cc clang -module-ref
 
 # dependencies
 days := $(wildcard day/*)
 data := $(wildcard data/*)
 r7rs_deps := $(days) $(data)
 profiler := profiler.sld
+gscprfiler := benchmark/profiler.sld
 
 guiledays := $(wildcard guilesrc/day*)
 guile_deps := $(guiledays) $(data)
@@ -38,7 +39,7 @@ gambitdays := guilesrc/1.sld guilesrc/2.sld guilesrc/3.sld guilesrc/4.sld guiles
 gambit_deps := $(gambitdays) $(data)
 
 gscdays_c := $(gambitdays:.sld=.c)
-profiler_c := $(profiler:.sld=.c)
+profiler_c := $(gscprofiler:.sld=.c)
 gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-guilesrc.c
 
 
@@ -66,16 +67,16 @@ guile-bytecode: load-to-compile.scm $(guile_deps) ## bytecode compile guile file
 	$(GUILE) $(FASTGUILEFLAGS) $<
 
 gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler)
-	$(gsi) $(gsiflags) $< | tee guile-bench.csv
+	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
 gsc-bench: $(gsc_deps)
-	$(gsc) $(gscexeflags) . .. $(gsc_deps)
+	$(gsc) $(gscexeflags) .  ..$(gsc_deps)
 
 profile-solutions-guilesrc.c: profile-solutions-guilesrc.scm $(profiler_c) $(gscdays_c)
-	$(gsc) -cc clang -cc-options "-O0" -c . .. $<
+	$(gsc) -cc clang  -c . .. $<
 
 %.c: %.sld
-	$(gsc) $(gscmodflags) $* -c . .. $^
+	$(gsc) $(gscmodflags) $* -c .  $^
 
 .ONESHELL:
 clean-guile-cache: ## remove guile

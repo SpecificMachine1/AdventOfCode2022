@@ -5,7 +5,7 @@
             (day 1) (day 2) (day 3) (day 4) (prefix  (day 5) day5-) (prefix (day 6) day6-)
             (benchmark profiler))))
 (start-run)
-(run "\"solution for 1.1 most calories\"" (most-calories (get-data (open-input-file "../data/day1-input.dat"))))
+(run "1.1 most calories" (most-calories (get-data (open-input-file "../data/day1-input.dat"))))
 (run "1.2 calories of top three" (calories-of-top-three (get-data (open-input-file "../data/day1-input.dat"))))
 (run "2.1 first method score" (score-games-2 (get-data-2 "../data/day2-input.dat")))
 (run "2.2 second method score" (score-games-2.1 (get-data-2 "../data/day2-input.dat")))

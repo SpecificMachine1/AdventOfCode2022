@@ -1,13 +1,13 @@
 name, millisec to run once, average millisec for 100 runs
-"solution for 1.1 most calories",1.893,.84963
-1.2 calories of top three,.914,.88364
-2.1 first method score,3.16,2.47853
-2.2 second method score,4.794,4.45732
-3.1 compartment priority sum,4.693,3.89813
-3.2 badge priority sum,4.345,4.55995
-4.1 fully contained ranges,4.386,3.28176
-4.2 overlapping ranges,3.492,3.24997
-5.1  mov one at a time,5.057,3.27169
-5.2  mov all at once,2.973,2.9532
-6.1 find packet start,4.445,3.43816
-6.2 find packet start,13.731,13.82271
+"solution for 1.1 most calories",1.323,0.59168
+1.2 calories of top three,0.547,0.58422
+2.1 first method score,5.014,2.90648
+2.2 second method score,2.604,3.1159
+3.1 compartment priority sum,9.2,7.94434
+3.2 badge priority sum,8.153,8.17736
+4.1 fully contained ranges,4.937,4.40314
+4.2 overlapping ranges,4.489,4.375
+5.1  mov one at a time,4.547,3.4702
+5.2  mov all at once,4.327,3.41244
+6.1 find packet start,0.475,0.30786
+6.2 find packet start,1.594,1.76058
