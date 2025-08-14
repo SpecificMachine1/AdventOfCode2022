@@ -1,4 +1,4 @@
-(define-library (guilesrc day5)
+(define-library (ports day5)
   (import (scheme base)
           (scheme char)
           (srfi srfi-1)

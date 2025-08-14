@@ -1,12 +1,12 @@
 ;; SPDX-License-Identifier: AGPL-3.0-or-later
 ;; day-1.scm solutions for day one
 ;; Copyright © 2022 Specific Machine
-(define-library (guilesrc 1)
+(define-library (ports day1)
   (export get-data most-calories calories-of-top-three)
   (import (scheme base)
 	  (scheme file)
           (scheme char)
-	  (only (srfi 1) every))
+	  (only (srfi srfi-1) every))
 
   (begin
 

@@ -2,7 +2,7 @@
 ;; day/3.sld solutions for day three
 ;; Copyright © 2022 Specific Machine
 ;; https://adventofcode.com/2022/day/3
-(define-library (guilesrc day3)
+(define-library (ports day3)
   (export get-data-3 Compart Rucksack make-char-table
           item->priority make-rucksack overlap-priorities filename->result-3.1
           filename->result-3.2)

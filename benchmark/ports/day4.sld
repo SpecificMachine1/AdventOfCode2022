@@ -1,5 +1,5 @@
 ;; https://adventofcode.com/2022/day/4
-(define-library (guilesrc day4)
+(define-library (ports day4)
   (export filename->result-4.1 filename->result-4.2)
   (import (scheme base)
           (scheme cxr)

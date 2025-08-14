@@ -31,16 +31,16 @@ r7rs_deps := $(days) $(data)
 profiler := profiler.sld
 gscprofiler := benchmark/profiler.sld
 
-guiledays := $(wildcard guilesrc/day*)
+guiledays := $(wildcard ports/day*)
 guile_deps := $(guiledays) $(data)
 
-gambitdays := guilesrc/1.sld guilesrc/2.sld guilesrc/3.sld guilesrc/4.sld guilesrc/5.sld \
-              guilesrc/6.sld
+gambitdays := ports/1.sld ports/2.sld ports/3.sld ports/4.sld ports/5.sld \
+              ports/6.sld
 gambit_deps := $(gambitdays) $(data)
 
 gscdays_c := $(gambitdays:.sld=.c)
 profiler_c := $(gscprofiler:.sld=.c)
-gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-guilesrc.c
+gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-ports.c
 
 
 ############################################################
@@ -52,24 +52,24 @@ gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-guilesrc.c
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: gauche-bench.csv gauche-guilesrc-bench.csv guile-bench.csv gsi-bench.csv ## run all benchmarks
+all: gauche-bench.csv gauche-ports-bench.csv guile-bench.csv gsi-bench.csv ## run all benchmarks
 
 gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler) ## run benchmarks for original solutions in Gauche
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
 
-gauche-guilesrc-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler) ## run benchmarks for ported solutions in Gauche
-	$(GOSH) $(GOSHFLAGS) $< | tee gauche-guilesrc-bench.csv
+gauche-ports-bench.csv: profile-solutions-ports.scm $(guile_deps) $(profiler) ## run benchmarks for ported solutions in Gauche
+	$(GOSH) $(GOSHFLAGS) $< | tee gauche-ports-bench.csv
 
-guile-bench.csv: profile-solutions-guilesrc.scm $(guile_deps) $(profiler) ## run ported benchmarks with Guile
+guile-bench.csv: profile-solutions-ports.scm $(guile_deps) $(profiler) ## run ported benchmarks with Guile
 	$(GUILE) $(FASTGUILEFLAGS) $< | tee guile-bench.csv
 
-gsi-bench.csv: profile-solutions-guilesrc.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
+gsi-bench.csv: profile-solutions-ports.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
 	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
 gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
 	$(gsc) $(gscexeflags) .  $(gsc_deps)
 
-profile-solutions-guilesrc.c: profile-solutions-guilesrc.scm $(profiler_c) $(gscdays_c)
+profile-solutions-ports.c: profile-solutions-ports.scm $(profiler_c) $(gscdays_c)
 	$(gsc) -cc clang  -c .  $<
 
 %.c: %.sld

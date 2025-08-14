@@ -1,5 +1,5 @@
 ;; https://adventofcode.com/2022/day/6
-(define-library (guilesrc 6)
+(define-library (ports 6)
   (import (scheme base)
           (scheme file)
           (only (srfi 1) fold take drop)

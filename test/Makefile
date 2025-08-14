@@ -26,11 +26,11 @@ days := $(wildcard day/*)
 data := $(wildcard data/*)
 r7rs_deps := test-common.scm $(days) $(data)
 
-guiledays := $(wildcard guilesrc/day*)
+guiledays := $(wildcard ports/day*)
 guile_deps := test-common.scm $(guiledays) $(data)
 
-gambitdays := guilesrc/1.sld guilesrc/2.sld guilesrc/3.sld guilesrc/4.sld guilesrc/5.sld \
-              guilesrc/6.sld
+gambitdays := ports/1.sld ports/2.sld ports/3.sld ports/4.sld ports/5.sld \
+              ports/6.sld
 gambit_deps := test-common.scm $(gambitdays) $(data)
 
 ####################################### post-processing ###############################

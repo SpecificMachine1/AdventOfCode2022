@@ -2,12 +2,12 @@
 ;;
 ;; Copyright © 2022 Specific Machine
 ;; problem: https://adventofcode.com/2022/day/2
-(define-library (guilesrc day2)
+(define-library (ports 2)
 		(export get-data-2 score-games-2 score-games-2.1)
 		(import (scheme base)
 			(scheme file)
 			(scheme read)
-			(only (srfi srfi-1) fold))
+			(only (srfi 1) fold))
 (begin
   (define (get-data-2 filename)
     (call-with-input-file

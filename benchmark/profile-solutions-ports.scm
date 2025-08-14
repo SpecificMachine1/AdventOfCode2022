@@ -2,12 +2,12 @@
   (guile
     (import (scheme base)
             (scheme file)
-            (guilesrc day1) (guilesrc day2) (guilesrc day3) (guilesrc day4) (prefix  (guilesrc day5) day5-) (prefix (guilesrc day6) day6-)
+            (ports day1) (ports day2) (ports day3) (ports day4) (prefix  (ports day5) day5-) (prefix (ports day6) day6-)
             (benchmark profiler)))
   (else
     (import (scheme base)
             (scheme file)
-            (guilesrc 1) (guilesrc 2) (guilesrc 3) (guilesrc 4) (prefix  (guilesrc 5) day5-) (prefix (guilesrc 6) day6-)
+            (ports 1) (ports 2) (ports 3) (ports 4) (prefix  (ports 5) day5-) (prefix (ports 6) day6-)
             (benchmark profiler))))
 (start-run)
 (run "1.1 most calories" (most-calories (get-data (open-input-file "../data/day1-input.dat"))))
