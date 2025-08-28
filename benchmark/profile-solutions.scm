@@ -16,4 +16,4 @@
 (run "5.1  mov one at a time" (day5-get-result (day5-run-job (day5-get-data "../data/day5-input.dat"))))
 (run "5.2  mov all at once" (day5-get-result (day5-run-job-2 (day5-get-data "../data/day5-input.dat"))))
 (run "6.1 find packet start" (day6-ds-start (day6-get-data "../data/day6-input.dat")))
-(run "6.2 find packet start" (day6-get-start-of-message (day6-get-data "../data/day6-input.dat")))
+(run "6.2 find message start" (day6-get-start-of-message (day6-get-data "../data/day6-input.dat")))

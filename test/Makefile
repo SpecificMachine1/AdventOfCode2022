@@ -65,4 +65,4 @@ guile-aoc-test: aoc-test.guile.scm $(guile_deps) ## test against Guile
 	$(GUILE) $(GUILEFLAGS) $< | tee test-logs/guile.csv | $(HANDLE_RES)
 
 gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
-	$(gsi) $(gsiflags) $< | tee test-logs/gambit.log | $(HANDLE_RES)
+	$(gsi) $(gsiflags) $< #| tee test-logs/gambit.log | $(HANDLE_RES)

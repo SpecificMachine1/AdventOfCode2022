@@ -21,8 +21,8 @@ FASTESTGUILEFLAGS = -L . -L .. -O9 -x .sld # according to the manual this works,
 gsi = gsi
 gsiflags = -:r7rs . ..
 gsc = gsc
-gscexeflags = -cc clang -exe -nopreload 
-gscmodflags = -cc clang -module-ref
+gscexeflags = -keep-temp -exe -nopreload 
+gscmodflags = -keep-temp -module-ref
 
 # dependencies
 days := $(wildcard day/*)
@@ -40,7 +40,7 @@ gambit_deps := $(gambitdays) $(data)
 
 gscdays_c := $(gambitdays:.sld=.c)
 profiler_c := $(gscprofiler:.sld=.c)
-gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-ports.c
+gsc_deps :=  $(profiler_c) $(gscdays_c) gsc-bench.c
 
 
 ############################################################
@@ -52,7 +52,7 @@ gsc_deps :=  $(profiler_c) $(gscdays_c) profile-solutions-ports.c
 help:  ## print this message
 	grep -E '^[^ :]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-all: gauche-bench.csv gauche-ports-bench.csv guile-bench.csv gsi-bench.csv ## run all benchmarks
+all: gauche-bench.csv gauche-ports-bench.csv guile-bench.csv gsi-bench.csv gsc-bench.csv ## run all benchmarks
 
 gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler) ## run benchmarks for original solutions in Gauche
 	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
@@ -66,11 +66,14 @@ guile-bench.csv: profile-solutions-ports.scm $(guile_deps) $(profiler) ## run po
 gsi-bench.csv: profile-solutions-ports.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
 	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
 
+gsc-bench.csv: gsc-bench ## output gambitc benchmarks
+	./gsc-bench | tee gsc-bench.csv	
+
 gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
 	$(gsc) $(gscexeflags) .  $(gsc_deps)
 
-profile-solutions-ports.c: profile-solutions-ports.scm $(profiler_c) $(gscdays_c)
-	$(gsc) -cc clang  -c .  $<
+gsc-bench.c: gsc-bench.scm $(profiler_c) $(gscdays_c)
+	$(gsc) -c .  $<
 
 %.c: %.sld
 	$(gsc) $(gscmodflags) $* -c .  $^

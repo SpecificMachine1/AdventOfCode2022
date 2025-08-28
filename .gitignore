@@ -4,4 +4,5 @@
 files.*
 data/*input.dat
 *.c
-benchmark/profile-solutions-guilesrc
+*.o
+benchmark/gsc-bench
