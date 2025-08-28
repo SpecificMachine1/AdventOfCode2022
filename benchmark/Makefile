@@ -55,19 +55,19 @@ help:  ## print this message
 all: gauche-bench.csv gauche-ports-bench.csv guile-bench.csv gsi-bench.csv gsc-bench.csv ## run all benchmarks
 
 gauche-bench.csv: profile-solutions.scm $(r7rs_deps) $(profiler) ## run benchmarks for original solutions in Gauche
-	$(GOSH) $(GOSHFLAGS) $< | tee gauche-bench.csv
+	$(GOSH) $(GOSHFLAGS) $< | tee results/gauche-bench.csv
 
 gauche-ports-bench.csv: profile-solutions-ports.scm $(guile_deps) $(profiler) ## run benchmarks for ported solutions in Gauche
-	$(GOSH) $(GOSHFLAGS) $< | tee gauche-ports-bench.csv
+	$(GOSH) $(GOSHFLAGS) $< | tee results/gauche-ports-bench.csv
 
 guile-bench.csv: profile-solutions-ports.scm $(guile_deps) $(profiler) ## run ported benchmarks with Guile
-	$(GUILE) $(FASTGUILEFLAGS) $< | tee guile-bench.csv
+	$(GUILE) $(FASTGUILEFLAGS) $< | tee results/guile-bench.csv
 
 gsi-bench.csv: profile-solutions-ports.scm $(gambit_deps) $(profiler) ## run ported benchmarks with Gambit interpreter
-	$(gsi) $(gsiflags) $< | tee gsi-bench.csv
+	$(gsi) $(gsiflags) $< | tee results/gsi-bench.csv
 
 gsc-bench.csv: gsc-bench ## output gambitc benchmarks
-	./gsc-bench | tee gsc-bench.csv	
+	./gsc-bench | tee results/gsc-bench.csv	
 
 gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
 	$(gsc) $(gscexeflags) .  $(gsc_deps)
@@ -87,4 +87,4 @@ test:
 	echo $(go-files)
 
 clean:
-	$(RM) *.csv
+	$(RM) results/*.csv
