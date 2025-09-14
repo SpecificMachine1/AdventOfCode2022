@@ -3,6 +3,7 @@
     (import (scheme base)
             (scheme file)
             (ports day1) (ports day2) (ports day3) (ports day4) (prefix  (ports day5) day5-) (prefix (ports day6) day6-)
+            (prefix (ports 7) day7-)
             (benchmark profiler)))
   (else
     (import (scheme base)
@@ -26,3 +27,6 @@
 ;(run "5.2  mov all at once" (day5-get-result (day5-run-job-2 (day5-get-data "../data/day5-input.dat"))))
 (run "6.1 find packet start" (day6-ds-start (day6-get-data "../data/day6-input.dat")))
 (run "6.2 find message start" (day6-get-start-of-message (day6-get-data "../data/day6-input.dat")))
+(run "7.1 dirs <= 100000" (day7-dirs-with-max-size (day7-get-data "../data/day7-input.dat") 100000))
+(run "7.2 space to free" 
+     (day7-size-of-dir-to-free-space 70000000 30000000 (day7-get-data "../data/day7-input.dat")))

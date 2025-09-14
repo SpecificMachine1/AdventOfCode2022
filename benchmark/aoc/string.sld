@@ -1,0 +1,12 @@
+(define-library (aoc string)
+  (cond-expand (guile (import (scheme base)
+                              (scheme char)
+                              (srfi srfi-1)))
+               (else (import (scheme base)
+                             (scheme char)
+                             (only (srfi 1) every))))
+  (export number-string?)
+(begin
+  (define (number-string? str)
+    (every char-numeric? (string->list str)))
+))

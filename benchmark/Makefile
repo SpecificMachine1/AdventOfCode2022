@@ -26,21 +26,24 @@ gscmodflags = -keep-temp -module-ref
 
 # dependencies
 days := $(wildcard day/*)
+aoc  := $(wildcard aoc/*)
 data := $(wildcard data/*)
-r7rs_deps := $(days) $(data)
+r7rs_deps := $(days) $(aoc) $(data)
 profiler := profiler.sld
 gscprofiler := benchmark/profiler.sld
 
 guiledays := $(wildcard ports/day*)
-guile_deps := $(guiledays) $(data)
+guile_deps := $(guiledays) $(aoc) $(data)
 
 gambitdays := ports/1.sld ports/2.sld ports/3.sld ports/4.sld ports/5.sld \
-              ports/6.sld
-gambit_deps := $(gambitdays) $(data)
+              ports/6.sld ports/7.sld
+gambitaoc  := $(aoc) 
+gambit_deps := $(gambitdays) $(aoc) $(data)
 
 gscdays_c := $(gambitdays:.sld=.c)
 profiler_c := $(gscprofiler:.sld=.c)
-gsc_deps :=  $(profiler_c) $(gscdays_c) gsc-bench.c
+aoc_c := $(gambitaoc:.sld=.c)
+gsc_deps :=  $(profiler_c) $(aoc_c) $(gscdays_c) gsc-bench.c
 
 
 ############################################################
@@ -72,7 +75,7 @@ gsc-bench.csv: gsc-bench ## output gambitc benchmarks
 gsc-bench: $(gsc_deps) ## build gambitc benchmarks (builds but doesn't make output)
 	$(gsc) $(gscexeflags) .  $(gsc_deps)
 
-gsc-bench.c: gsc-bench.scm $(profiler_c) $(gscdays_c)
+gsc-bench.c: gsc-bench.scm $(profiler_c) $(aoc_c) $(gscdays_c)
 	$(gsc) -c .  $<
 
 %.c: %.sld
