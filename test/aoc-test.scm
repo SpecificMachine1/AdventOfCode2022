@@ -24,7 +24,7 @@
                    (scheme file)
                  (scheme write)
                  (ports 1) (ports 2) (ports 3) (ports 4)
-                 (prefix (ports 5) day5-) (prefix (ports 6) day6-) (prefix (ports 7) day7)
+                 (prefix (ports 5) day5-) (prefix (ports 6) day6-) (prefix (ports 7) day7-)
                  (srfi 64))
           (let ((test-name "gambit-test"))
            (include "test-common.scm")))

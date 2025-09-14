@@ -5,7 +5,7 @@
                    (srfi srfi-13)))
     (else (import (scheme base)
                   (scheme file)
-                  (srfi 13))))
+                  (only (srfi 13) string-tokenize))))
   (export get-line-strings file-read file-nil file-cons file-fold get-line-tokens)
 (begin
 

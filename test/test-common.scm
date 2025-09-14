@@ -55,13 +55,13 @@
 ;;day 7 tests
 (let* ((data (day7-get-data "../data/day7-example1.dat"))
       (result (day7-dirs-with-max-size data 100000)))
-  (test-assert "6.1a check directory size"
+  (test-assert "7.1a check directory size"
                (and (= 584 (day7-dir-get-size (day7-find-sub-dir "e" (day7-find-sub-dir "a" data))))
                     (= 94853 (day7-dir-get-size (day7-find-sub-dir "a" data)))
                     (= 24933642 (day7-dir-get-size (day7-find-sub-dir "d" data)))
                     (= 48381165 (day7-dir-get-size data))))
-  (test-equal "6.1b total of directories lte than 100000"  95437 result)
-  (test-equal "6.2 space to free" 24933642 (day7-size-of-dir-to-free-space 70000000 30000000 data)))
+  (test-equal "7.1b total of directories lte than 100000"  95437 result)
+  (test-equal "7.2 space to free" 24933642 (day7-size-of-dir-to-free-space 70000000 30000000 data)))
 (test-end test-name)
 
 #;(let* ((data (day7-get-data "../data/day7-input.dat"))

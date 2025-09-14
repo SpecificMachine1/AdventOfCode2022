@@ -4,7 +4,7 @@
                               (srfi srfi-1)))
                (else (import (scheme base)
                              (scheme char)
-                             (srfi 1))))
+                             (only (srfi 1) every))))
   (export number-string?)
 (begin
   (define (number-string? str)
