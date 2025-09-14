@@ -1,4 +1,4 @@
-(define (aoc strings)
+(define-library (aoc string)
   (cond-expand (guile (import (scheme base)
                               (scheme char)
                               (srfi srfi-1)))

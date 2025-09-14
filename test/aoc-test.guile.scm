@@ -3,6 +3,7 @@
         (scheme write)
         (ports day1) (ports day2) (ports day3) (ports day4)
         (prefix (ports day5) day5-) (prefix (ports day6) day6-)
+        (prefix (ports day7) day7-)
         (srfi srfi-64))
 (let ((test-name "guile-test"))
            (include "runner.scm")

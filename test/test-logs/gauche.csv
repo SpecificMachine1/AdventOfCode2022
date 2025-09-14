@@ -11,4 +11,7 @@ test, 	 status
 5.2 mov all at once , 	 pass 
 6.1 find packet start , 	 pass 
 6.2 find message start , 	 pass 
-Passing tests: 12 , 	 Failing tests: 0
+6.1a check directory size , 	 pass 
+6.1b total of directories lte than 100000 , 	 pass 
+6.2 space to free , 	 pass 
+Passing tests: 15 , 	 Failing tests: 0
