@@ -4,14 +4,14 @@
             (scheme file)
             (srfi srfi-1)
             (ports day1) (ports day2) (ports day3) (ports day4) (prefix  (ports day5) day5-) (prefix (ports day6) day6-)
-            (prefix (ports day7) day7-)
+            (prefix (ports day7) day7-) (prefix (ports day8) day8-)
             (benchmark profiler)))
   (else
     (import (scheme base)
             (scheme file)
             (srfi 1)
             (ports 1) (ports 2) (ports 3) (ports 4) (prefix  (ports 5) day5-) (prefix (ports 6) day6-)
-            (prefix (ports 7) day7-)
+            (prefix (ports 7) day7-) (prefix (ports 8) day8-)
             (benchmark profiler))))
 (start-run)
 (run "0.0 value" 3)
@@ -32,3 +32,5 @@
 (run "7.1 dirs <= 100000" (day7-dirs-with-max-size (day7-get-data "../data/day7-input.dat") 100000))
 (run "7.2 space to free" 
      (day7-size-of-dir-to-free-space 70000000 30000000 (day7-get-data "../data/day7-input.dat")))
+(run "8.1 visible trees" (length (day8-visible-trees (day8-get-data "../data/day8-input.dat"))))
+(run "8.2 scenic score" (day8-max-scenic-score (day8-get-data "../data/day8-input.dat")))

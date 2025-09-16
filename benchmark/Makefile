@@ -36,7 +36,7 @@ guiledays := $(wildcard ports/day*)
 guile_deps := $(guiledays) $(aoc) $(data)
 
 gambitdays := ports/1.sld ports/2.sld ports/3.sld ports/4.sld ports/5.sld \
-              ports/6.sld ports/7.sld
+              ports/6.sld ports/7.sld ports/8.sld
 gambitaoc  := aoc/file.sld aoc/string.sld aoc/matrix.sld
 gambit_deps := $(gambitdays) $(gambitaoc) $(data)
 
