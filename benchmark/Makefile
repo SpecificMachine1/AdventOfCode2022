@@ -37,8 +37,8 @@ guile_deps := $(guiledays) $(aoc) $(data)
 
 gambitdays := ports/1.sld ports/2.sld ports/3.sld ports/4.sld ports/5.sld \
               ports/6.sld ports/7.sld
-gambitaoc  := $(aoc) 
-gambit_deps := $(gambitdays) $(aoc) $(data)
+gambitaoc  := aoc/file.sld aoc/string.sld aoc/matrix.sld
+gambit_deps := $(gambitdays) $(gambitaoc) $(data)
 
 gscdays_c := $(gambitdays:.sld=.c)
 profiler_c := $(gscprofiler:.sld=.c)

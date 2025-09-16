@@ -10,6 +10,7 @@
             (scheme file)
             (srfi 1)
             (ports 1) (ports 2) (ports 3) (ports 4) (prefix  (ports 5) day5-) (prefix (ports 6) day6-)
+            (prefix (ports 7) day7-)
             (benchmark profiler))))
 (start-run)
 (run "0.0 value" 3)
