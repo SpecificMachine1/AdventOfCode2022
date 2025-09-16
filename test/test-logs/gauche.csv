@@ -14,4 +14,6 @@ test, 	 status
 7.1a check directory size , 	 pass 
 7.1b total of directories lte than 100000 , 	 pass 
 7.2 space to free , 	 pass 
-Passing tests: 15 , 	 Failing tests: 0
+8.1 visible trees , 	 pass 
+8.2 scenic score , 	 pass 
+Passing tests: 17 , 	 Failing tests: 0

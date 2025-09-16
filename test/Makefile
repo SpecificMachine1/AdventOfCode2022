@@ -66,3 +66,6 @@ guile-aoc-test: aoc-test.guile.scm $(guile_deps) ## test against Guile
 
 gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
 	$(gsi) $(gsiflags) $< #| tee test-logs/gambit.log | $(HANDLE_RES)
+
+matrix-test: matrix-tests.scm $(r7rs_deps) ## tests matrix struct
+	$(GOSH) $(GOSHFLAGS) $< | tee test-logs/matrix.csv | $(HANDLE_RES)

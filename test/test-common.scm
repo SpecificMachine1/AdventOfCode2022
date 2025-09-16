@@ -62,9 +62,19 @@
                     (= 48381165 (day7-dir-get-size data))))
   (test-equal "7.1b total of directories lte than 100000"  95437 result)
   (test-equal "7.2 space to free" 24933642 (day7-size-of-dir-to-free-space 70000000 30000000 data)))
+;;day 8 tests
+(let ((data (day8-get-data "../data/day8-example1.dat")))
+  (test-equal "8.1 visible trees" (length (day8-visible-trees data)) 21)
+  (test-equal "8.2 scenic score" (day8-max-scenic-score data) 8))
 (test-end test-name)
 
 #;(let* ((data (day7-get-data "../data/day7-input.dat"))
       (result (day7-dirs-with-max-size data 100000))
       (result2 (day7-size-of-dir-to-free-space 70000000 30000000 data)))
   (display result) (newline) (display result2) (newline))
+
+#;(let ((data (day8-get-data "../data/day8-input.dat")))
+  (display (length (day8-visible-trees data)))
+  (newline)
+  (display (day8-max-scenic-score data))
+  (newline))

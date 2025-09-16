@@ -1,18 +1,18 @@
 name, microseconds to run once, average microseconds for 100 runs
-0.0 value,1.0,0.01
+0.0 value,1.0,0.02
 0.1 base procedure,0.0,0.01
-0.2 library procedure,2.0,0.62
-1.1 most calories,930.0,549.24
-1.2 calories of top three,547.0,557.46
-2.1 first method score,2770.0,2680.57
-2.2 second method score,2655.0,2889.89
-3.1 compartment priority sum,9204.0,7960.64
-3.2 badge priority sum,8296.0,8158.21
-4.1 fully contained ranges,5750.0,4456.29
-4.2 overlapping ranges,3168.0,4430.14
-5.1  mov one at a time,4189.0,3537.98
-5.2  mov all at once,3443.0,3480.06
-6.1 find packet start,492.0,311.99
-6.2 find message start,1586.0,1887.91
-7.1 dirs <= 100000,2439.0,1774.08
-7.2 space to free,1753.0,1776.86
+0.2 library procedure,5.0,1.18
+1.1 most calories,1352.0,580.85
+1.2 calories of top three,565.0,576.79
+2.1 first method score,6408.0,2840.62
+2.2 second method score,3548.0,3058.35
+3.1 compartment priority sum,9990.0,7804.41
+3.2 badge priority sum,9640.0,8024.44
+4.1 fully contained ranges,5698.0,4298.6
+4.2 overlapping ranges,4860.0,4413.01
+5.1  mov one at a time,4468.0,3409.2
+5.2  mov all at once,3327.0,3348.93
+6.1 find packet start,656.0,302.17
+6.2 find message start,1507.0,1708.74
+7.1 dirs <= 100000,3340.0,1715.01
+7.2 space to free,1691.0,1689.14
