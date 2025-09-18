@@ -1,20 +1,20 @@
 name, microseconds to run once, average microseconds for 25 runs
-0.0 value,0.75,0.02332
-0.1 base procedure,0.333,0.02168
-0.2 library procedure,3.5,2.14168
-1.1 most calories,14700.583,13974.35332
-1.2 calories of top three,11380.459,14302.205
-2.1 first method score,2490.334,1722.27836
-2.2 second method score,2424.875,3105.09832
-3.1 compartment priority sum,5895.625,6161.30168
-3.2 badge priority sum,6144.916,6595.80332
-4.1 fully contained ranges,16903.875,18440.97168
-4.2 overlapping ranges,16793.417,18402.405
-5.1  mov one at a time,26296.667,26204.16664
-5.2  mov all at once,25343.541,26127.885
-6.1 find packet start,1602.125,905.03832
-6.2 find message start,3953.0,4448.03168
-7.1 dirs <= 100000,2598.958,5422.13332
-7.2 space to free,5941.792,5466.46164
-8.1 visible trees,9197.042,8742.485
-8.2 scenic score,7165.041,7873.93168
+0.0 value,0.709,0.02332
+0.1 base procedure,0.291,0.02
+0.2 library procedure,3.458,2.24668
+1.1 most calories,14277.291,13521.88168
+1.2 calories of top three,11401.167,13436.275
+2.1 first method score,1736.458,1646.705
+2.2 second method score,2482.25,2888.535
+3.1 compartment priority sum,8447.292,5952.64664
+3.2 badge priority sum,5959.167,6674.53668
+4.1 fully contained ranges,18398.792,20313.44332
+4.2 overlapping ranges,24403.667,18280.66168
+5.1  mov one at a time,27880.542,25504.57668
+5.2  mov all at once,23914.584,25058.42336
+6.1 find packet start,1229.542,979.48332
+6.2 find message start,4051.5,4716.18
+7.1 dirs <= 100000,2605.167,5568.02
+7.2 space to free,6062.167,5293.45
+8.1 visible trees,8990.375,8826.72832
+8.2 scenic score,7570.625,7673.08832

@@ -66,8 +66,20 @@
 (let ((data (day8-get-data "../data/day8-example1.dat")))
   (test-equal "8.1 visible trees" (length (day8-visible-trees data)) 21)
   (test-equal "8.2 scenic score" (day8-max-scenic-score data) 8))
+;;day 9 tests
+(let ((data (day9-get-data "../data/day9-example1.dat"))
+      (data2 (day9-get-data "../data/day9-example2.dat")))
+  (test-equal "9.1 locations visited" (day9-positions-visited (day9-run-motions data)) 13)
+  (test-equal "9.2a multi locations, first example" (day9-positions-visited (day9-run-motions* data 10)) 1)
+  (test-equal "9.2b multi locations, second example" (day9-positions-visited (day9-run-motions* data2 10)) 36))
+
 (test-end test-name)
 
+(let ((data (day9-get-data "../data/day9-input.dat")))
+  (display (day9-positions-visited (day9-run-motions data)))
+  (newline)
+  (display (day9-positions-visited (day9-run-motions* data 10)))
+  (newline))
 #;(let* ((data (day7-get-data "../data/day7-input.dat"))
       (result (day7-dirs-with-max-size data 100000))
       (result2 (day7-size-of-dir-to-free-space 70000000 30000000 data)))
