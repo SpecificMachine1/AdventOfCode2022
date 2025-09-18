@@ -19,7 +19,7 @@
   (knot-set-current-pos! knot pos)
   (hash-table-set! (knot-get-visited knot)
                    pos
-                   (+ 1 (hash-table-ref/default (knot-get-visited knot) pos 0))))
+                   #t))
   
 (define (get-data filename)
   (let ((tokens (reverse (get-line-tokens filename))))
