@@ -1,20 +1,20 @@
 name, microseconds to run once, average microseconds for 100 runs
-0.0 value,401.,.09
+0.0 value,100.,.01
 0.1 base procedure,1.,.01
-0.2 library procedure,4.,.81
-1.1 most calories,420.,260.82
-1.2 calories of top three,285.,356.13
-2.1 first method score,1431.,851.42
-2.2 second method score,1025.,1016.31
-3.1 compartment priority sum,2260.,1474.37
-4.1 fully contained ranges,1957.,1127.7
-4.2 overlapping ranges,1161.,1154.43
-5.1  mov one at a time,2031.,1289.99
-6.1 find packet start,1354.,290.19
-6.2 find message start,2818.,2829.1
-7.1 dirs <= 100000,1890.,1042.76
-7.2 space to free,1023.,1047.36
-8.1 visible trees,1803.,1576.03
-8.2 scenic score,1413.,1438.62
-9.1 tail visited: 2 segments,13742.,13654.5
-9.1 tail visited: 10 segments,35712.,35550.9
+0.2 library procedure,9.,2.37
+1.1 most calories,699.,400.39
+1.2 calories of top three,376.,291.2
+2.1 first method score,1181.,852.73
+2.2 second method score,1035.,1015.85
+3.1 compartment priority sum,2261.,1467.19
+4.1 fully contained ranges,1599.,1121.21
+4.2 overlapping ranges,1099.,1116.63
+5.1  mov one at a time,2297.,1282.28
+6.1 find packet start,1338.,288.2
+6.2 find message start,2869.,2794.36
+7.1 dirs <= 100000,1478.,1032.08
+7.2 space to free,1020.,1029.29
+8.1 visible trees,2610.,1567.06
+8.2 scenic score,1458.,1432.29
+9.1 tail visited: 2 segments,13512.,13290.69
+9.1 tail visited: 10 segments,35185.,34862.33

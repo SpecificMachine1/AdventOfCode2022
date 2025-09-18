@@ -7,19 +7,16 @@
 (begin
 
 (define-record-type <knot>
-  (knot name current-pos history visited)
+  (knot current-pos visited)
   knot?
-  (name knot-get-name)
   (current-pos knot-get-current-pos knot-set-current-pos!)
-  (history knot-get-history knot-set-history!)
   (visited knot-get-visited knot-set-visited!))
 
-(define (make-knot name start-pos)
-  (knot name start-pos (list start-pos) (alist->hash-table (list (cons start-pos 1)) equal?)))
+(define (make-knot start-pos)
+  (knot start-pos  (alist->hash-table (list (cons start-pos 1)) equal?)))
 
 (define (update-knot-pos knot pos)
   (knot-set-current-pos! knot pos)
-  (knot-set-history! knot (cons pos (knot-get-history knot)))
   (hash-table-set! (knot-get-visited knot)
                    pos
                    (+ 1 (hash-table-ref/default (knot-get-visited knot) pos 0))))
@@ -33,8 +30,8 @@
                             (cons "L" (lambda (x y) (list (- x 1) y)))
                             (cons "U" (lambda (x y) (list x (+ y 1))))
                             (cons "D" (lambda (x y) (list x (- y 1))))))
-        (head (make-knot 'head (list 0 0)))
-        (tail (make-knot 'tail (list 0 0))))
+        (head (make-knot (list 0 0)))
+        (tail (make-knot (list 0 0))))
     (define (head-update update-fun)
       (let* ((pos (knot-get-current-pos head))
              (x (car pos))
@@ -73,9 +70,7 @@
                             (cons "L" (lambda (x y) (list (- x 1) y)))
                             (cons "U" (lambda (x y) (list x (+ y 1))))
                             (cons "D" (lambda (x y) (list x (- y 1))))))
-        (i -1)
-        (incr (lambda () (set! i (+ 1 i)) i))
-        (knots (list->vector (map (lambda (_) (make-knot (incr) (list 0 0))) (make-list n))))
+        (knots (list->vector (map (lambda (_) (make-knot  (list 0 0))) (make-list n))))
         (head (vector-ref knots 0))
         (tail (vector-ref knots (- n 1))))
     (define (head-update update-fun)
