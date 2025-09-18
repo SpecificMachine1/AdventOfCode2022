@@ -16,4 +16,7 @@ test, 	 status
 7.2 space to free , 	 pass 
 8.1 visible trees , 	 pass 
 8.2 scenic score , 	 pass 
-Passing tests: 17 , 	 Failing tests: 0
+9.1 locations visited , 	 pass 
+9.2a multi locations, first example , 	 pass 
+9.2b multi locations, second example , 	 pass 
+Passing tests: 20 , 	 Failing tests: 0

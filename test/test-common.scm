@@ -75,7 +75,9 @@
 
 (test-end test-name)
 
-(let ((data (day9-get-data "../data/day9-input.dat")))
+;;;        Generate Output       ;;;
+
+#;(let ((data (day9-get-data "../data/day9-input.dat")))
   (display (day9-positions-visited (day9-run-motions data)))
   (newline)
   (display (day9-positions-visited (day9-run-motions* data 10)))
