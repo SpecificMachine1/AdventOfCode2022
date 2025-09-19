@@ -72,10 +72,19 @@
   (test-equal "9.1 locations visited" (day9-positions-visited (day9-run-motions data)) 13)
   (test-equal "9.2a multi locations, first example" (day9-positions-visited (day9-run-motions* data 10)) 1)
   (test-equal "9.2b multi locations, second example" (day9-positions-visited (day9-run-motions* data2 10)) 36))
-
+;; day 10 tests
+(let ((data (day10-get-data "../data/day10-example1.dat")))
+  (test-equal "10.1 signal strength at 20/60/100/140/180/220" (day10-run-program-check data) 13140)
+  (test-equal "10.2 display on crt" 
+              (day10-run-program-on-crt data) (reverse (day10-get-line-strings "../data/day10-crt-output.dat")))) 
 (test-end test-name)
 
 ;;;        Generate Output       ;;;
+
+#;(let ((data (day10-get-data "../data/day10-input.dat")))
+  (display (day10-run-program-check data))
+  (newline)
+  (map (lambda (s) (display s) (newline)) (day10-run-program-on-crt data)))
 
 #;(let ((data (day9-get-data "../data/day9-input.dat")))
   (display (day9-positions-visited (day9-run-motions data)))

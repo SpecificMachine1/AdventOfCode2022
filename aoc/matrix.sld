@@ -1,8 +1,8 @@
 (define-library (aoc matrix)
   (import (scheme base))
-  (export list->matrix matrix-get-element matrix? matrix-get-m matrix-get-n
+  (export list->matrix matrix-get-element matrix? matrix-get-m matrix-get-n matrix-set-element!
           matrix-get-row matrix-get-column matrix-get-rows matrix-get-columns
-          matrix-fold)
+          matrix-fold make-list-of-lists )
 (begin
 
   (define-record-type <matrix>
@@ -20,9 +20,16 @@
             (length (car list-of-lists))
             (list->vector (map list->vector list-of-lists))
             (list->vector (map list->vector (transpose-lol list-of-lists)))))
+
+  (define (make-list-of-lists m n value)
+    (make-list m (make-list n value)))
   
   (define (matrix-get-element matrix i j)
     (vector-ref (vector-ref (matrix-get-rows matrix) i) j))
+
+  (define (matrix-set-element! matrix i j obj)
+    (vector-set! (vector-ref (matrix-get-rows matrix) i) j obj)
+    (vector-set! (vector-ref (matrix-get-columns matrix) j) i obj))
 
   (define (matrix-get-row matrix i)
     (vector-ref (matrix-get-rows matrix) i))

@@ -19,4 +19,6 @@ test, 	 status
 9.1 locations visited , 	 pass 
 9.2a multi locations, first example , 	 pass 
 9.2b multi locations, second example , 	 pass 
-Passing tests: 20 , 	 Failing tests: 0
+10.1 signal strength at 20/60/100/140/180/220 , 	 pass 
+10.2 display on crt , 	 fail 
+Passing tests: 21 , 	 Failing tests: 1
