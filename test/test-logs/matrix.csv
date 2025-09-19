@@ -3,6 +3,3 @@ item access , 	 pass
 row access , 	 pass 
 column access , 	 pass 
 Passing tests: 3 , 	 Failing tests: 0
-#(1 2 3)
-#(4 5 6)
-#(7 8 9)

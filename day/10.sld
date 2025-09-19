@@ -30,7 +30,7 @@
     (define (draw-pixel cycle X)
       (let ((row (quotient cycle 40))
             (column (remainder (- cycle 1) 40)))
-        (when (<= (- X 1) column (+ X 1))
+        (when (<= (- X 1.1) column (+ X 1.1))
           (matrix-set-element! crt row column #\#))))
     (let prog-loop ((prog program) (add-cycles 0)  (X 1) (cycles 1))
       (cond
