@@ -35,11 +35,14 @@
                body ...
                (lp (- i 1)))))))))
   (define (start-run)
-    (display (string-append "name, " (unit-name) " to run once, average " (unit-name) " for " (number->string (runs)) " runs\n")))
+    (display (string-append "name, " (unit-name) " to run once, average " (unit-name) " for " (number->string (runs)) " runs\n"))
+    (flush-output-port))
+
   (define-syntax run
     (syntax-rules ()
       ((run name body ...)
        (let ((once (parameterize ((runs 1)) (time-it body ...)))
              (multi (time-it body ...)))
-         (display (string-append name "," (number->string once) "," (number->string multi) "\n"))))))
+         (display (string-append name "," (number->string once) "," (number->string multi) "\n"))
+         (flush-output-port)))))
   ))

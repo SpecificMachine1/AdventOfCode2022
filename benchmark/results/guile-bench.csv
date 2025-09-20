@@ -1,22 +1,22 @@
 name, microseconds to run once, average microseconds for 100 runs
-0.0 value,2.0,0.01
-0.1 base procedure,0.0,0.01
-0.2 library procedure,5.0,0.97
-1.1 most calories,994.0,547.33
-1.2 calories of top three,528.0,568.2
-2.1 first method score,3325.0,2689.82
-2.2 second method score,4422.0,2913.29
-3.1 compartment priority sum,10237.0,7936.33
-3.2 badge priority sum,8319.0,8159.75
-4.1 fully contained ranges,4427.0,4330.37
-4.2 overlapping ranges,5680.0,4310.72
-5.1  mov one at a time,4891.0,3503.38
-5.2  mov all at once,3406.0,3444.22
-6.1 find packet start,1310.0,297.62
-6.2 find message start,1546.0,1758.22
-7.1 dirs <= 100000,2400.0,1760.96
-7.2 space to free,1735.0,1734.82
-8.1 visible trees,4988.0,2903.83
-8.2 scenic score,2719.0,2855.26
-9.1 tail visited: 2 segments,20021.0,18100.72
-9.1 tail visited: 10 segments,47674.0,47133.25
+0.0 value,2.0,0.02
+0.1 base procedure,0.0,0.02
+0.2 library procedure,6.0,1.0
+1.1 most calories,1063.0,563.41
+1.2 calories of top three,520.0,575.6
+2.1 first method score,5246.0,2795.28
+2.2 second method score,2738.0,3006.04
+3.1 compartment priority sum,10171.0,7924.79
+3.2 badge priority sum,8363.0,8133.36
+4.1 fully contained ranges,5863.0,4499.8
+4.2 overlapping ranges,4960.0,4506.28
+5.1  mov one at a time,4900.0,3481.08
+5.2  mov all at once,3340.0,3398.58
+6.1 find packet start,1217.0,315.0
+6.2 find message start,1598.0,1817.93
+7.1 dirs <= 100000,3217.0,1747.73
+7.2 space to free,1727.0,1758.5
+8.1 visible trees,3578.0,3000.17
+8.2 scenic score,2687.0,2932.89
+9.1 tail visited: 2 segments,17998.0,18074.28
+9.1 tail visited: 10 segments,45756.0,46804.79
