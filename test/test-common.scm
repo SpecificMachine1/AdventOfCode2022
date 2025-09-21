@@ -77,10 +77,35 @@
   (test-equal "10.1 signal strength at 20/60/100/140/180/220" (day10-run-program-check data) 13140)
   (test-equal "10.2 display on crt" 
               (day10-run-program-on-crt data) (reverse (day10-get-line-strings "../data/day10-crt-output.dat")))) 
+;day 11 tests
+(let* ((monkeys1 (day11-get-data "../data/day11-example1.dat"))
+       (monkeys2 (day11-get-data "../data/day11-example1.dat"))
+       (m1-0 (vector-ref monkeys1 0))
+       (m1-1 (vector-ref monkeys1 1))
+       (m1-2 (vector-ref monkeys1 2))
+       (m1-3 (vector-ref monkeys1 3))
+       (part-1-factor 3)
+       (part-2-factor 1))
+  (begin
+    (day11-one-round monkeys1 part-1-factor)
+    (test-equal "11.1a monkey 0 items after 1 round" (list 20 23 27 26) (day11-monkey-get-items m1-0))
+    (test-equal "11.1b monkey 1 items after 1 round" (list 2080 25 167 207 401 1046) (day11-monkey-get-items m1-1))
+    (test-equal "11.1c monkey 2 items after 1 round" 0 (length (day11-monkey-get-items m1-2)))
+    (test-equal "11.1d monkey 3 items after 1 round0" 0 (length (day11-monkey-get-items m1-3)))
+    (day11-n-rounds monkeys1 19 part-1-factor)
+    (test-equal "11.1e monkey-business after 20 rounds" 10605 (day11-monkey-business monkeys1)))
+  (test-equal "11.2 monkey-business after 10k rounds"
+              2713310158
+              (day11-monkey-business (day11-n-rounds-2 monkeys2 10000))))
 (test-end test-name)
 
 ;;;        Generate Output       ;;;
 
+#;(let ((data-1 (day11-get-data "../data/day11-input.dat"))
+      (data-2 (day11-get-data "../data/day11-input.dat")))
+  (newline) (display (vector-length data-1)) (newline)
+  (newline) (display (day11-monkey-business (day11-n-rounds data-1 20 3))) (newline)
+  (display (day11-monkey-business (day11-n-rounds-2 data-2 10000))) (newline))
 #;(let ((data (day10-get-data "../data/day10-input.dat")))
   (display (day10-run-program-check data))
   (newline)

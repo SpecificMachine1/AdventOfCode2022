@@ -9,7 +9,8 @@
     (test-runner-on-test-begin! runner
       (lambda (runner)
         (begin (display (test-runner-test-name runner))
-               (display " , \t"))))
+               (display " , \t")
+               (flush-output-port))))
     (test-runner-on-test-end! runner
       (lambda (runner)
         (case (test-result-kind runner)
