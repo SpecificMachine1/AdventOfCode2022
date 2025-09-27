@@ -2,4 +2,8 @@ test, 	 status
 item access , 	 pass 
 row access , 	 pass 
 column access , 	 pass 
-Passing tests: 3 , 	 Failing tests: 0
+start set value , 	 pass 
+end set value , 	 pass 
+matrix-map , 	 pass 
+item access 2 , 	 pass 
+Passing tests: 7 , 	 Failing tests: 0

@@ -2,7 +2,7 @@
   (import (scheme base))
   (export list->matrix matrix-get-element matrix? matrix-get-m matrix-get-n matrix-set-element!
           matrix-get-row matrix-get-column matrix-get-rows matrix-get-columns
-          matrix-fold make-list-of-lists )
+          matrix-fold make-list-of-lists matrix-map)
 (begin
 
   (define-record-type <matrix>
@@ -47,4 +47,20 @@
                   (cond
                     ((= j n) (i-loop (+ i 1) acc))
                     (else (j-loop (+ j 1) (matrix-cons i j acc))))))))))
+
+  (define (build-m-by-n m n)
+    (let ((outer (make-vector m)))
+      (vector-map (lambda (i) (make-vector n)) outer)))
+
+  (define (matrix-map f mat)
+    (let* ((m (matrix-get-m mat))
+           (n (matrix-get-n mat))
+           (new (matrix m n (build-m-by-n m n) (build-m-by-n n m))))
+      (let row-loop ((i 0))
+        (cond
+          ((= i m) new)
+          (else (let col-loop ((j 0))
+                  (cond ((= j n) (row-loop (+ i 1)))
+                        (else (matrix-set-element! new i j (f (matrix-get-element mat i j) i j))
+                              (col-loop (+ j 1))))))))))
 ))
