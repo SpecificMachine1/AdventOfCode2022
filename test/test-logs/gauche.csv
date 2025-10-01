@@ -1,30 +1,8 @@
 test, 	 status 
-1.1-most-calories , 	 pass 
-1.2-calories-of-top-three , 	 pass 
-2.1-first-method-score , 	 pass 
-2.2-second-method-score , 	 pass 
-3.1-first-priority-sum , 	 pass 
-3.2-first-priority-sum , 	 pass 
-4.1-overlapping ranges , 	 pass 
-4.2-overlapping ranges , 	 pass 
-5.1 mov one at a time , 	 pass 
-5.2 mov all at once , 	 pass 
-6.1 find packet start , 	 pass 
-6.2 find message start , 	 pass 
-7.1a check directory size , 	 pass 
-7.1b total of directories lte than 100000 , 	 pass 
-7.2 space to free , 	 pass 
-8.1 visible trees , 	 pass 
-8.2 scenic score , 	 pass 
-9.1 locations visited , 	 pass 
-9.2a multi locations; first example , 	 pass 
-9.2b multi locations; second example , 	 pass 
-10.1 signal strength at 20/60/100/140/180/220 , 	 pass 
-10.2 display on crt , 	 fail 
-11.1a monkey 0 items after 1 round , 	 pass 
-11.1b monkey 1 items after 1 round , 	 pass 
-11.1c monkey 2 items after 1 round , 	 pass 
-11.1d monkey 3 items after 1 round0 , 	 pass 
-11.1e monkey-business after 20 rounds , 	 pass 
-11.2 monkey-business after 10k rounds , 	 pass 
-Passing tests: 27 , 	 Failing tests: 1
+FAIL 10.2 display on crt
+  expected:("##..##..##..##..##..##..##..##..##..##.." "###...###...###...###...###...###...###." "####....####....####....####....####...." "#####.....#####.....#####.....#####....." "######......######......######......###." "#######.......#######.......#######....#")
+    actual:("##..##..##..##..##..##..##..##..##..##.." "###...###...###...###...###...###...###." "####....####....####....####....####...." "#####.....#####.....#####.....#####....." "######......######......######......####" "#######.......#######.......#######.....")
+# of expected passes      28
+# of unexpected failures  1
+
+391

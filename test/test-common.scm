@@ -97,9 +97,16 @@
   (test-equal "11.2 monkey-business after 10k rounds"
               2713310158
               (day11-monkey-business (day11-n-rounds-2 monkeys2 10000))))
+(let ((data (day12-get-data "../data/day12-example1.dat")))
+  (test-equal "12.1 shortest path" (length (day12-path-get-history (day12-find-shortest-path data))) 32))
 (test-end test-name)
 
 ;;;        Generate Output       ;;;
+
+(let ((data (day12-get-data "../data/day12-input.dat")))
+  (newline)
+  (display (- (length (day12-path-get-history (day12-find-shortest-path data))) 1))
+  (newline))
 
 #;(let ((data-1 (day11-get-data "../data/day11-input.dat"))
       (data-2 (day11-get-data "../data/day11-input.dat")))
