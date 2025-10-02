@@ -11,7 +11,7 @@
                   (prefix (day 11) day11-) (prefix (day 12) day12-)
                   (srfi 64))
           (let ((test-name "gauche-test"))
-            ;(include "test/runner.scm")
+            (include "test/runner.scm")
             (include "test/test-common.scm")))
   (guile (import (scheme base)
                  (scheme file)

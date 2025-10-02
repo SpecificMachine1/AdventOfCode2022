@@ -6,7 +6,7 @@
           (only (srfi 1) filter)
           (aoc file)
           (aoc matrix))
-  (export get-data find-shortest-path path-get-history)
+  (export get-data find-shortest-path path-get-history find-shortest-path-of-all)
 (begin
   (define-record-type <maze>
     (maze map start end)
@@ -46,8 +46,11 @@
 (define (unvisited? path pos)
   (hash-table-ref/default (path-get-tracker path) pos #t))
 
+;; will try to use parameters to mod for second problem instead of
+;; repeating function
+(define get-starts (make-parameter (lambda (maze) (list (extend-path (make-path) (get-start maze))))))
 (define (find-shortest-path maze)
-  (let* ((start (get-start maze))
+  (let* (#;(start (get-start maze))
         (end (get-end maze))
         (grid (get-map maze)))
     (define (get-possibles path)
@@ -60,7 +63,7 @@
                                           1)
                                       (unvisited? path pos)))
                   candidates))))
-    (let path-loop ((paths (list (extend-path (make-path) start))) (extended-paths '()))
+    (let path-loop ((paths #;(list (extend-path (make-path) start)) ((get-starts) maze)) (extended-paths '()))
       (cond
         ((null? paths) (if (null? extended-paths)
                          (error "did not find" end)
@@ -72,5 +75,19 @@
                   ((null? possibles) (path-loop (cdr paths) (append extended-paths next-paths)))
                   ((equal? (car possibles) end) (extend-path this-path end))
                   (else (extension-loop (cdr possibles) (cons (extend-path this-path (car possibles)) next-paths)))))))))))
+
+(define (get-starts-2 maze)
+  (let ((init (make-path))) 
+    (map (lambda (pos) (extend-path init pos))
+         (matrix-fold (lambda (i j acc)
+                 (if (zero? (matrix-get-element (get-map maze) i j))
+                   (cons (list i j) acc)
+                   acc))
+               '()
+               (get-map maze)))))
+
+(define (find-shortest-path-of-all maze)
+  (parameterize ((get-starts get-starts-2))
+    (find-shortest-path maze)))
 
 ))

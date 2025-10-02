@@ -91,21 +91,24 @@
     (test-equal "11.1a monkey 0 items after 1 round" (list 20 23 27 26) (day11-monkey-get-items m1-0))
     (test-equal "11.1b monkey 1 items after 1 round" (list 2080 25 167 207 401 1046) (day11-monkey-get-items m1-1))
     (test-equal "11.1c monkey 2 items after 1 round" 0 (length (day11-monkey-get-items m1-2)))
-    (test-equal "11.1d monkey 3 items after 1 round0" 0 (length (day11-monkey-get-items m1-3)))
+    (test-equal "11.1d monkey 3 items after 1 round" 0 (length (day11-monkey-get-items m1-3)))
     (day11-n-rounds monkeys1 19 part-1-factor)
     (test-equal "11.1e monkey-business after 20 rounds" 10605 (day11-monkey-business monkeys1)))
   (test-equal "11.2 monkey-business after 10k rounds"
               2713310158
               (day11-monkey-business (day11-n-rounds-2 monkeys2 10000))))
 (let ((data (day12-get-data "../data/day12-example1.dat")))
-  (test-equal "12.1 shortest path" (length (day12-path-get-history (day12-find-shortest-path data))) 32))
+  (test-equal "12.1 shortest path" (length (day12-path-get-history (day12-find-shortest-path data))) 32)
+  (test-equal "12.2 shortest of all" (length (day12-path-get-history (day12-find-shortest-path-of-all data))) 30))
 (test-end test-name)
 
 ;;;        Generate Output       ;;;
 
-(let ((data (day12-get-data "../data/day12-input.dat")))
+#;(let ((data (day12-get-data "../data/day12-input.dat")))
   (newline)
   (display (- (length (day12-path-get-history (day12-find-shortest-path data))) 1))
+  (newline)
+  (display (- (length (day12-path-get-history (day12-find-shortest-path-of-all data))) 1))
   (newline))
 
 #;(let ((data-1 (day11-get-data "../data/day11-input.dat"))
