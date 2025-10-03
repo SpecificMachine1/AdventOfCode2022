@@ -97,13 +97,28 @@
   (test-equal "11.2 monkey-business after 10k rounds"
               2713310158
               (day11-monkey-business (day11-n-rounds-2 monkeys2 10000))))
+;;day 12 tests
 (let ((data (day12-get-data "../data/day12-example1.dat")))
   (test-equal "12.1 shortest path" (length (day12-path-get-history (day12-find-shortest-path data))) 32)
   (test-equal "12.2 shortest of all" (length (day12-path-get-history (day12-find-shortest-path-of-all data))) 30))
+;;day 13 tests
+(let* ((data (day13-get-data "../data/day13-example1.dat"))
+      (ordered-data (day13-ordered-packets data)))
+  (test-equal "13.1a compare packets" '(-1 -1 1 -1 1 -1 1 1) (map day13-packet-compare data))
+  (test-equal "13.1b get in order indices" '(1 2 4 6) (day13-indices-of-in-order-packets data))
+  (test-equal "13.1c sum" 13 (apply + (day13-indices-of-in-order-packets data)))
+  (test-equal "13.2a first sorted item" '() (vector-ref ordered-data 0))
+  (test-equal "13.2b last sorted item" '(9) (vector-ref ordered-data (- (vector-length ordered-data) 1)))
+  (test-equal "13.2c decoder key" 140 (day13-get-decoder-key data)))
 (test-end test-name)
 
 ;;;        Generate Output       ;;;
-
+#;(let ((data (day13-get-data "../data/day13-input.dat")))
+  (newline)
+  (display (apply + (day13-indices-of-in-order-packets data)))
+  (newline)
+  (display (day13-get-decoder-key data))
+  (newline))
 #;(let ((data (day12-get-data "../data/day12-input.dat")))
   (newline)
   (display (- (length (day12-path-get-history (day12-find-shortest-path data))) 1))

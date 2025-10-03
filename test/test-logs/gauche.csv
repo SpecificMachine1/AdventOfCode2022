@@ -29,4 +29,10 @@ test, 	 status
 11.2 monkey-business after 10k rounds , 	 pass 
 12.1 shortest path , 	 pass 
 12.2 shortest of all , 	 pass 
-Passing tests: 29 , 	 Failing tests: 1
+13.1a compare packets , 	 pass 
+13.1b get in order indices , 	 pass 
+13.1c sum , 	 pass 
+13.2a first sorted item , 	 pass 
+13.2b last sorted item , 	 pass 
+13.2c decoder key , 	 pass 
+Passing tests: 35 , 	 Failing tests: 1

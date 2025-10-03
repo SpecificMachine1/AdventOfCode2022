@@ -8,7 +8,7 @@
                   (scheme write)
                   (day 1) (day 2) (day 3) (day 4) (prefix (day 5) day5-) (prefix (day 6) day6-)
                   (prefix (day 7) day7-) (prefix (day 8) day8-) (prefix (day 9) day9-) (prefix (day 10) day10-)
-                  (prefix (day 11) day11-) (prefix (day 12) day12-)
+                  (prefix (day 11) day11-) (prefix (day 12) day12-) (prefix (day 13) day13-)
                   (srfi 64))
           (let ((test-name "gauche-test"))
             (include "test/runner.scm")
