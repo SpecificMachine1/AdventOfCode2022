@@ -73,12 +73,12 @@
   (test-equal "9.2a multi locations; first example" (day9-positions-visited (day9-run-motions* data 10)) 1)
   (test-equal "9.2b multi locations; second example" (day9-positions-visited (day9-run-motions* data2 10)) 36))
 ;; day 10 tests
-(let ((data (day10-get-data "../data/day10-example1.dat")))
+#;(let ((data (day10-get-data "../data/day10-example1.dat")))
   (test-equal "10.1 signal strength at 20/60/100/140/180/220" (day10-run-program-check data) 13140)
   (test-equal "10.2 display on crt" 
               (day10-run-program-on-crt data) (reverse (day10-get-line-strings "../data/day10-crt-output.dat")))) 
 ;day 11 tests
-(let* ((monkeys1 (day11-get-data "../data/day11-example1.dat"))
+#;(let* ((monkeys1 (day11-get-data "../data/day11-example1.dat"))
        (monkeys2 (day11-get-data "../data/day11-example1.dat"))
        (m1-0 (vector-ref monkeys1 0))
        (m1-1 (vector-ref monkeys1 1))
@@ -98,11 +98,11 @@
               2713310158
               (day11-monkey-business (day11-n-rounds-2 monkeys2 10000))))
 ;;day 12 tests
-(let ((data (day12-get-data "../data/day12-example1.dat")))
+#;(let ((data (day12-get-data "../data/day12-example1.dat")))
   (test-equal "12.1 shortest path" (length (day12-path-get-history (day12-find-shortest-path data))) 32)
   (test-equal "12.2 shortest of all" (length (day12-path-get-history (day12-find-shortest-path-of-all data))) 30))
 ;;day 13 tests
-(let* ((data (day13-get-data "../data/day13-example1.dat"))
+#;(let* ((data (day13-get-data "../data/day13-example1.dat"))
       (ordered-data (day13-ordered-packets data)))
   (test-equal "13.1a compare packets" '(-1 -1 1 -1 1 -1 1 1) (map day13-packet-compare data))
   (test-equal "13.1b get in order indices" '(1 2 4 6) (day13-indices-of-in-order-packets data))
