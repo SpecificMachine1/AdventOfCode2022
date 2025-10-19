@@ -6,4 +6,6 @@ start set value , 	 pass
 end set value , 	 pass 
 matrix-map , 	 pass 
 item access 2 , 	 pass 
-Passing tests: 7 , 	 Failing tests: 0
+vector transpose , 	 pass 
+sub matrix , 	 pass 
+Passing tests: 9 , 	 Failing tests: 0

@@ -69,3 +69,6 @@ gambit-aoc-test: aoc-test.scm $(gambit_deps) ## test against Gambit
 
 matrix-test: matrix-tests.scm $(r7rs_deps) ## tests matrix struct
 	$(GOSH) $(GOSHFLAGS) $< | tee test-logs/matrix.csv | $(HANDLE_RES)
+
+data-test: data-tests.scm $(r7rs_deps) ## tests aoc/data library
+	$(GOSH) $(GOSHFLAGS) $< | tee test-logs/data.csv | $(HANDLE_RES)

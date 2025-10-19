@@ -53,4 +53,6 @@
                                 (= (matrix-get-element data 2 0) 7)
                                 (= (matrix-get-element data 2 1) 8)
                                 (= (matrix-get-element data 2 2) 9)))
+(test-equal "vector transpose" #(#(1 4 7) #(2 5 8) #(3 6 9)) (vector-transpose (matrix-get-rows data)))
+(test-equal "sub matrix" #(#(2 3) #(5 6)) (matrix-get-rows (keep-for-submatrix data '(0 1) '(1 2))))
 (test-end "matrix-tests")

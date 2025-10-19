@@ -1,0 +1,6 @@
+test, 	 status 
+negative sign , 	 pass 
+zero sign , 	 pass 
+positive sign , 	 pass 
+range inclusive , 	 pass 
+Passing tests: 4 , 	 Failing tests: 0

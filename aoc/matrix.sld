@@ -2,7 +2,7 @@
   (import (scheme base))
   (export list->matrix matrix-get-element matrix? matrix-get-m matrix-get-n matrix-set-element!
           matrix-get-row matrix-get-column matrix-get-rows matrix-get-columns
-          matrix-fold make-list-of-lists matrix-map)
+          matrix-fold make-list-of-lists matrix-map vector-transpose keep-for-submatrix)
 (begin
 
   (define-record-type <matrix>
@@ -63,4 +63,27 @@
                   (cond ((= j n) (row-loop (+ i 1)))
                         (else (matrix-set-element! new i j (f (matrix-get-element mat i j) i j))
                               (col-loop (+ j 1))))))))))
+
+  (define (vector-transpose vector-of-vectors)
+    (apply vector-map (cons vector (vector->list vector-of-vectors))))
+  
+  ;; At least for the current problem, it easier to define a submatrix by what I am keeping
+  ;; so that is how I am writing this procedure, but the more usual way is to define it
+  ;; by what is dropped
+  (define (keep-for-submatrix in-matrix rows columns)
+    (let* ((row-size (length rows))
+           (row-vector (make-vector row-size)))
+      (let row-loop ((i 0) (rows-left rows))
+        (cond
+          ((null? rows-left) (let* ((col-size (length columns))
+                                    (out-cols (make-vector col-size))
+                                    (new-cols (vector-transpose row-vector)))
+                               (let col-loop ((i 0) (cols-left columns))
+                                 (cond
+                                   ((null? cols-left) (matrix row-size col-size (vector-transpose out-cols) out-cols))
+                                   (else (vector-set! out-cols i (vector-ref new-cols (car cols-left)))
+                                         (col-loop (+ i 1) (cdr cols-left)))))))
+          (else (vector-set! row-vector i (matrix-get-row in-matrix (car rows-left)))
+                (row-loop (+ i 1) (cdr rows-left)))))))
+
 ))
